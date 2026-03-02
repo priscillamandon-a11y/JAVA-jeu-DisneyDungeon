@@ -5,16 +5,16 @@
 | - board          |
 | - dice           |
 +------------------+
-| + startGame()    |
-| + playTurn()     |
+| - startGame()    |
+| - playTurn()     |
 +------------------+
 
 +------------------+
 |      Menu        |
 +------------------+
-| + showMainMenu() |
-| + askCharacter() |
-| + showCharacter()|
+| - showMainMenu() |
+| - askCharacter() |
+| - showCharacter()|
 +------------------+
 
 +------------------+
@@ -27,8 +27,8 @@
 | - offensiveEq    |   --->  | Wizard  |
 | - defensiveEq    |         -----------
 +------------------+
-| + getters/setters|
-| + toString()     |
+| - getters/setters|
+| - toString()     |
 +------------------+
 
 +---------------------------+
@@ -50,11 +50,11 @@
 +------------------+
 |      Board       |
 +------------------+
-| - size = 64      |
+|   size = 64      |
 +------------------+
 
 +------------------+
 |      Dice        |
 +------------------+
-| + roll()         |
+|   roll()         |
 +------------------+
