@@ -40,9 +40,9 @@ public class OffensiveEquipement {
     public void setName(String name) {
         this.name = name;
     }
-    //Methode spécial -> transforme un objet en text lisible
+    //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return super.toString();
+        return "Offensive Equipement [Type = "+type+" Attack Level = "+attackLevel+" Name = "+name+"]";
     }
 }
