@@ -14,7 +14,7 @@ public class OffensiveEquipement {
         this.name = name;
     }
     // Methodes :
-    // pour lire les valeurs -> GETTER
+    // pour lire les valeurs d'un attribut privé-> GETTER
     public String getType() {
         return type;
     }
@@ -27,7 +27,8 @@ public class OffensiveEquipement {
         return name;
     }
     // Methodes :
-    // pour modifier les valeurs -> SETTER
+    // pour modifier les valeurs d'un attribut privé -> SETTER
+
     public void setType(String type) {
         this.type = type;
     }
@@ -36,5 +37,12 @@ public class OffensiveEquipement {
         this.attackLevel = attackLevel;
     }
 
-
+    public void setName(String name) {
+        this.name = name;
+    }
+    //Methode spécial -> transforme un objet en text lisible
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
