@@ -47,6 +47,6 @@ public class DefensiveEquipement {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "Defensive Equipement [Type = "+type+" Defense Level = "+defenseLevel+" name = "+name+"]";
+        return "[Nom = "+name+" /Niveau defensif = "+defenseLevel+" /Type = "+type+"]";
     }
 }

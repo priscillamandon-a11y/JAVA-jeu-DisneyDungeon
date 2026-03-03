@@ -72,7 +72,14 @@ public class Character {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "Character [name= " +name+ " Type = "+type+" life = "+life+" attack = " +attack+ " Offensive equipement = "+offensiveEquipement+ " Defensive equipement = "+defensiveEquipement +"]";
+        return "\n"+"-> Vous avez Choisi :\n"
+                +"Le type :"+" "+type+"\n"
+                +"Son nom sera :"+" "+name+"\n"
+                +"-> Voici ses cractèristiques : \n"
+                +"[ Niveau de vie = "+life+"\n"
+                +" Force de frappe = "+attack+"\n"
+                +" Equipement d'attaque = "+offensiveEquipement+"\n"
+                +" Equipement defensif = "+defensiveEquipement+"\n ]";
     }
 
 }
