@@ -74,4 +74,7 @@ public class Character {
     public String toString() {
         return "Character [name= " +name+ " Type = "+type+" life = "+life+" attack = " +attack+ " Offensive equipement = "+offensiveEquipement+ " Defensive equipement = "+defensiveEquipement +"]";
     }
+
 }
+
+

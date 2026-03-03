@@ -1,6 +1,7 @@
 package fr.campus.disneydungeon;
 
 public class DefensiveEquipement {
+
     //Variables d'instance
     private String type;
     private int defenseLevel;

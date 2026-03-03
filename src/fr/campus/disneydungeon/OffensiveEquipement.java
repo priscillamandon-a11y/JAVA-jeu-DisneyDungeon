@@ -1,6 +1,7 @@
 package fr.campus.disneydungeon;
 
 public class OffensiveEquipement {
+
     //Variables d'instance (attributs)
     private String type; // armes ou sortilege
     private int attackLevel;
