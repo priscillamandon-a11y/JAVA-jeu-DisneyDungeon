@@ -14,7 +14,7 @@ public class Menu {
         return scanner.nextInt(); // lire la saisie utilisateur
     }
     public void quitGame(){
-         System.out.println("Vous avez quitter le jeu, votre aventure s'arrête ici! \n"+"******** Au revoir ********\n");
+         System.out.println("\n Vous avez quitter le jeu, votre aventure s'arrête ici! \n"+"      ******** Au revoir ********\n");
     }
 
     public int askCharacterType(){
@@ -26,11 +26,12 @@ public class Menu {
     }
 
     public String askCharacterName(){
-        System.out.print(" Nom de votre personnage =>  "+"\n(Taper 0 = Quitter)");
+        System.out.println("(Taper 0 = Quitter)");
+        System.out.print("Donner un nom à votre personnage => ");
         return scanner.next();
     }
 
-    public void printCharacter(Character character){
+    public void displayCharacter(Character character){
         System.out.println (character);
     }
 
