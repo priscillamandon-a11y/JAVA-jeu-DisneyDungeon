@@ -17,4 +17,8 @@ public class Board {
         return size;
     }
 
+    @Override
+    public String toString() {
+        return "Plateau de jeu avec "+size+" cases";
+    }
 }

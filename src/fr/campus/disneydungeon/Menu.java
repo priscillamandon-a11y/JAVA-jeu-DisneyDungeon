@@ -35,5 +35,7 @@ public class Menu {
         System.out.println (character);
     }
 
+
+
     //scanner.close(); -> Pour fermer le clavier
 }
