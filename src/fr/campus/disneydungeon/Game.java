@@ -4,6 +4,8 @@ public class Game {
     // -------- Variables d'instances ----------
     private Menu menu;
     private  Character character;
+    private Board board;
+    private Dice dice;
 
 
     // -------- constructeur ------------------
