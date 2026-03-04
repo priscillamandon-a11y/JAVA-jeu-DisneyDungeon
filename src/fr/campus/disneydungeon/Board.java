@@ -17,8 +17,4 @@ public class Board {
         return size;
     }
 
-    // SET -> Modifier les valeurs des attributs privés
-    public void setSize(int size) {
-        this.size = size;
-    }
 }
