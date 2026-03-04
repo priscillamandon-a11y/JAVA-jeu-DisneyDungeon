@@ -19,8 +19,12 @@ public class Dice {
         return face;
     }
 
+    public void setFace(int face) {
+        this.face = face;
+    }
+
     @Override
     public String toString() {
-        return "Vous jouez avec un dé à"+face"faces";
+        return "Vous jouez avec un dé à"+face+" faces";
     }
 }

@@ -11,14 +11,18 @@ public class Game {
 
     // -------- constructeur ------------------
     public Game (){
-        this.menu = new Menu();// permettra l'utilisation dans toutes mes fonctions
+        //Creation des objets
+        this.menu = new Menu();// permet l'utilisation dans toutes mes fonctions
+        this.board = new Board(64);
+        this.dice = new Dice(6);
+        this.player = new Player();
 
     }
 
     // ------- Methodes/ fonctions ---------------
 
-    // Démarrage :
-    public void start(){
+    // *** Démarrage - Menu principal ***
+    public void gameIntro(){
         // Menu principal :
         int choice = this.menu.showMainMenu();
 
@@ -32,7 +36,7 @@ public class Game {
         }
     }
 
-    // Les personnages :
+    // *** Les personnages ***
     public void createCharacter(){
 
         //Choix type de personnage :
@@ -69,10 +73,17 @@ public class Game {
     public void displayCharacter(){
         this.menu.displayCharacter(character); // (utilise la variable d'instance de Game dans les parametres)
     }
-    // Quitter le jeu
+    // *** Quitter le jeu ***
     public void quitGame(){
         this.menu.quitGame(); // affiches les messages enregistrés dans Menu
         System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
+    }
+
+    // ********* Demarrage de l'aventure **************
+    public void startGame(){
+        // demander de démarrer la partie ou quitter
+        // si demarrer = ok taper sur
+
     }
 
 
