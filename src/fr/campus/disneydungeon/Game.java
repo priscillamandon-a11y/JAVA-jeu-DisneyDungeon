@@ -6,6 +6,7 @@ public class Game {
     private  Character character;
     private Board board;
     private Dice dice;
+    private Player player;
 
 
     // -------- constructeur ------------------
@@ -73,5 +74,7 @@ public class Game {
         this.menu.quitGame(); // affiches les messages enregistrés dans Menu
         System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
     }
+
+
 
 }

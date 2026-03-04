@@ -2,20 +2,21 @@ package fr.campus.disneydungeon;
 
 public class OffensiveEquipement {
 
-    //Variables d'instance (attributs)
+    //-------- Variables d'instance (attributs) --------
     private String type; // armes ou sortilege
     private int attackLevel;
     private String name;
 
-    // Constructeur
+    //-------- Constructeur ---------
     public OffensiveEquipement (String type, int attackLevel, String name){
-        // creation des attributs
+        // attributs
         this.type = type;
         this.attackLevel = attackLevel;
         this.name = name;
     }
-    // Methodes :
-    // pour lire les valeurs d'un attribut privé-> GETTER
+    //-------- Methodes --------
+
+    // Getter (Pour pouvoir lire les valeurs de mes varaibles privés dans mes autres classes)
     public String getType() {
         return type;
     }
@@ -27,9 +28,8 @@ public class OffensiveEquipement {
     public String getName() {
         return name;
     }
-    // Methodes :
-    // pour modifier les valeurs d'un attribut privé -> SETTER
 
+    // Setter (Pour modifier les valeurs de mes varaibles privés dans les autres classes)
     public void setType(String type) {
         this.type = type;
     }
@@ -41,6 +41,7 @@ public class OffensiveEquipement {
     public void setName(String name) {
         this.name = name;
     }
+
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {

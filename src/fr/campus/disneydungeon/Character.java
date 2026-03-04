@@ -10,7 +10,7 @@ public class Character {
     private DefensiveEquipement defensiveEquipement;
     private OffensiveEquipement offensiveEquipement;
 
-    //Constructeur :
+    //-------- Constructeur --------
     public Character (String name, String type,int life, int attack,DefensiveEquipement defensiveEquipement, OffensiveEquipement offensiveEquipement) {
         this.name = name;
         this.type = type;
@@ -20,7 +20,9 @@ public class Character {
         this.defensiveEquipement =defensiveEquipement;
     }
 
-    // Methodes -> Getter (Pour lire les attributs privés)
+    //--------- Methodes ---------
+
+    //Getter (Pour pouvoir lire les valeurs de mes varaibles privés dans mes autres classes)
     public String getName() {
         return name;
     }
@@ -44,7 +46,8 @@ public class Character {
     public DefensiveEquipement getDefensiveEquipement() {
         return defensiveEquipement;
     }
-    // Methodes -> Setter (Pour modifier les valeurs des attributs privés)
+
+    //Setter (Pour modifier les valeurs de mes varaibles privés dans les autres classes)
     public void setName(String name) {
         this.name = name;
     }
