@@ -15,7 +15,6 @@ public class Game {
         this.menu = new Menu();// permet l'utilisation dans toutes mes fonctions
         this.board = new Board(64);
         this.dice = new Dice(6);
-        this.player = new Player();
 
     }
 
@@ -66,12 +65,22 @@ public class Game {
         } else {
             quitGame();
         }
-        // j'appel la methode depuis la class Menu pour Afficher le personnage:
-        displayCharacter();
+
+        this.player = new Player(1,character);// Creation du player après le choix du personnage pour que je puisse l'utiliser dans mes autres methodes
+
+        displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage:
     }
     // Methode qui me permettra de modifier plus tard (si besoin) uniquement la classe Menu:
     public void displayCharacter(){
-        this.menu.displayCharacter(character); // (utilise la variable d'instance de Game dans les parametres)
+        int choice = this.menu.displayCharacter(character);
+        if (choice == 1){
+            startGame();
+        }else if (choice == 0){
+            quitGame();
+        }else {
+            System.out.println("Saisie invalide");
+            startGame();
+        }
     }
     // *** Quitter le jeu ***
     public void quitGame(){
@@ -81,8 +90,22 @@ public class Game {
 
     // ********* Demarrage de l'aventure **************
     public void startGame(){
-        // demander de démarrer la partie ou quitter
-        // si demarrer = ok taper sur
+        int choice = menu.startGame(player);
+        if(choice == 1){
+            playBoard();
+        }else if (choice == 0){
+        quitGame();
+        }else {
+        System.out.println("Saisie invalide");
+        startGame();
+    }
+    }
+    public void playBoard(){
+        // boucle jusqu'à la fin du plateau
+        while (player.getPosition() < board.getSize()){
+
+        }
+
 
     }
 

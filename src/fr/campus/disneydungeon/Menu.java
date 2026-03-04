@@ -39,17 +39,21 @@ public class Menu {
         return scanner.next();
     }
     // recap choix utilisateur
-    public void displayCharacter(Character character){
+    public int displayCharacter(Character character){
         System.out.println (character);
-        System.out.println("\n Démarrer la partie = appuyer sur ENTREE");
+        System.out.println("\nDémarrer la partie = appuyer sur 1");
         System.out.println("(Taper 0 = Quitter)");
+        return scanner.nextInt();
+
     }
 
-    //Demarrage de l'aventure -> intro + récap
-    public void startGame(Player player ){
-        System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.\n" +
-                "Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
+    //Commençer l'aventure -> intro + récap
+    public int startGame(Player player){
+        System.out.println(" ******* Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.\n" +
+                "Le destin du donjon repose entre les mains de ceux qui oseront y entrer. *******");
         System.out.println("Vous êtes : "+player.getCharacter().getName()+" "+player.getCharacter().getType()+","+"(Joueur "+player.getPlayerNumber()+")");
+        System.out.println("(Taper 0 = Quitter, Taper 1 = continuer)");
+        return scanner.nextInt();
 
     }
 
