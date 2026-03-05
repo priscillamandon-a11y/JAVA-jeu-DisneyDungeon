@@ -59,11 +59,9 @@ public class Menu {
     }
 
     // Affiche le score du dé + la position joueur
-    public int displayPosition(int diceResult, int position){
+    public void displayPosition(int diceResult, int position){
         System.out.println("Vous avez fait : "+diceResult);
         System.out.println("Vous êtes sur la case : "+position);
-        System.out.println("Taper 1 = Lancer le dé / Taper 0 = Quitter");
-        return scanner.nextInt();
     }
 
     public int askRollDice(){
