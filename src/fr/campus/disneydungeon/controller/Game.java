@@ -1,9 +1,13 @@
-package fr.campus.disneydungeon;
+package fr.campus.disneydungeon.controller;
+
+import model.*;
+import model.Character;
+import ui.Menu;
 
 public class Game {
     // -------- Variables d'instances ----------
     private Menu menu;
-    private  Character character;
+    private model.Character character;
     private Board board;
     private Dice dice;
     private Player player;
@@ -52,7 +56,7 @@ public class Game {
         // Creation du personnage selon le type choisi :
         if (typeChoice == 1){
             String type = "Guerrier";
-            this.character = new Character(name, type, 10 , 5,
+            this.character = new model.Character(name, type, 10 , 5,
                     new DefensiveEquipement("Shield",5,"Bouclier de départ"),
                     new OffensiveEquipement("Weapon",10,"Epée à deux main")
             );
@@ -94,7 +98,7 @@ public class Game {
     public void startGame(){
         int choice = menu.startGame(player);
         if(choice == 1){
-            playBoard();
+            goGame();
         }else if (choice == 0){
         quitGame();
         }else {
@@ -102,30 +106,21 @@ public class Game {
         startGame();
     }
     }
-    public void playBoard(){
-        if (){
+    public void goGame(){
+        // je fais ma boucle tant qu'elle n'atteint pas la fin du plateau
+        while (player.getPosition() <= board.getSize()) {
 
+            int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
+            int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
+
+            // je mets une condition pour ne pas dépasser les 64 cases
+            if (newPosition > board.getSize()) {
+                newPosition = board.getSize();
+            }
+            player.setPosition(newPosition); // je modifie la position du joueur
+            menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
         }
-        // boucle jusqu'à la fin du plateau
-        while (player.getPosition() <= board.getSize() && menu.askRollDice()== 1){
-                int diceResult = dice.rollOfDice();
-                int newPosition = player.getPosition() + diceResult;
-                player.setPosition(newPosition);
-                menu.displayPosition(diceResult, player.getPosition());
 
-                //  Pour ne pas dépasser le plateu de jeu
-                //if(newPosition > board.getSize()){
-                  //  newPosition = board.getSize();
-                }
-
-
-              //  } if (choice == 0){
-               // quitGame();
-            //}else {
-                //System.out.println("Saisie invalide");
-            //}
-            //}
-            menu.WinGame();
         }
 
     }

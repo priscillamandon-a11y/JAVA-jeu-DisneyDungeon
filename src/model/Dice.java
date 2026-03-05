@@ -1,4 +1,4 @@
-package fr.campus.disneydungeon;
+package model;
 
 public class Dice {
     //-------- Variables d'instance (attributs) --------

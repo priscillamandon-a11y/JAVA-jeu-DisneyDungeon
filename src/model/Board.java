@@ -1,4 +1,4 @@
-package fr.campus.disneydungeon;
+package model;
 
 public class Board {
     //-------- Variables d'instance (attributs) --------

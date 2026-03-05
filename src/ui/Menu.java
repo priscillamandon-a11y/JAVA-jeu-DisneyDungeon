@@ -1,4 +1,7 @@
-package fr.campus.disneydungeon;
+package ui;
+
+import model.Character;
+import model.Player;
 
 import java.util.Scanner;
 
@@ -10,9 +13,9 @@ public class Menu {
 
     // -------- Methodes --------
     public int showMainMenu (){
-        System.out.println("\n"+"***** == Bienvenu au Donjon Disney == *****"+"\n");
+        System.out.println("\n"+"***** == Bienvenue au Donjon Disney == *****"+"\n");
         System.out.println ("Taper 1 pour : Creer un personnage"+"\n"+"Taper 2 pour : Quitter le jeu");
-        System.out.print("\n"+"Quel est votre choix => ");
+        System.out.print("Quel est votre choix => ");
 
         return scanner.nextInt(); // lire la saisie utilisateur
     }
@@ -22,23 +25,22 @@ public class Menu {
     }
 
     public int askCharacterType(){
-        System.out.println ("Quel type de personnage voulez-vous creer ? ");
+        System.out.println ("\nQuel type de personnage voulez-vous creer ? ");
         System.out.println("Taper 1 pour : Un Guerrier"+"\n"+"Taper 2 pour : Un Magicien \n"+"Taper 0 pour : Quitter");
-        System.out.print ("\n"+"Votre choix => ");
+        System.out.print("Votre choix => ");
 
         return scanner.nextInt();
     }
 
     public String askCharacterName(){
-        System.out.println("(Taper 0 = Quitter)");
-        System.out.print("Donner un nom à votre personnage => ");
+        System.out.print("\n"+"Choisissez un nom à votre personnage => ");
+        System.out.println("\n(Taper 0 = Quitter)");
         return scanner.next();
     }
-    // recap choix utilisateur
+    // recap pour utilisateur + demande de demarrer la partie
     public int displayCharacter(Character character){
         System.out.println (character);
-        System.out.println("\nDémarrer la partie = appuyer sur 1");
-        System.out.println("(Taper 0 = Quitter)");
+        System.out.println("\nTaper 1 = Démarrer la partie / Taper 0 = Quitter");
         return scanner.nextInt();
 
     }
@@ -48,19 +50,19 @@ public class Menu {
         System.out.println("*********************************\nDans les profondeurs d’un royaume oublié,\ndes héros se lèvent pour affronter mystères et dangers.\n" +
                 "Le destin du donjon repose entre les mains de ceux qui oseront y entrer.\n*********************************\n");
         System.out.println("Vous êtes le : "+player.getCharacter().getType()+" "+player.getCharacter().getName()+","+"(Joueur "+player.getPlayerNumber()+")\n== VOTRE MISSION ==\nVous devez libérer le donjon de l'emprise du mal!\n*** Bonne chance ***");
-        System.out.println("(Taper 0 = Quitter / Taper 1 = Lancer le dé)");
+        System.out.println("(Taper 1 = Lancer le dé / Taper 0 = Quitter)");
         return scanner.nextInt();
 
     }
-    public int askRollDice (){
+
+    // Affiche le score du dé + la position joueur
+    public int displayPosition(int diceResult, int position){
+        System.out.println("Vous avez fait : "+diceResult);
+        System.out.println("Vous êtes sur la case : "+position);
         System.out.println("Taper 1 = Lancer le dé / Taper 0 = Quitter");
         return scanner.nextInt();
     }
-    // Affiche le score du dé + la position joueur
-    public void displayPosition(int diceResult, int position){
-        System.out.println("Vous avez fait : "+diceResult);
-        System.out.println("Vous êtes sur la case : "+position);
-    }
+
 
 
     // Affichage pour la fin de partie de jeu
