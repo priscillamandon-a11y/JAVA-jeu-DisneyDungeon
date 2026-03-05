@@ -94,34 +94,30 @@ public class Game {
 
     // ********* Demarrage de l'aventure **************
 
-
     public void startGame(){
-        int choice = menu.startGame(player);
-        if(choice == 1){
-            goGame();
-        }else if (choice == 0){
-        quitGame();
-        }else {
-        System.out.println("Saisie invalide");
-        startGame();
-    }
-    }
-    public void goGame(){
-        // je fais ma boucle tant qu'elle n'atteint pas la fin du plateau
-        while (player.getPosition() <= board.getSize()) {
+        menu.startGame(player);
 
-            int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
-            int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
+            while (player.getPosition() <= board.getSize()) {
+                int choice = menu.askRollDice();
 
-            // je mets une condition pour ne pas dépasser les 64 cases
-            if (newPosition > board.getSize()) {
-                newPosition = board.getSize();
+                if(choice == 1){
+                    int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
+                    int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
+                    // je mets une condition pour ne pas dépasser les 64 cases
+                    if (newPosition > board.getSize()) {
+                        newPosition = board.getSize();
+                    }
+                player.setPosition(newPosition); // je modifie la position du joueur
+                menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
+
+            } else if(choice == 0){
+                    quitGame();
+            } else {
+                    System.out.println("Saisie invalide");
+                    menu.displayCharacter(character);
+                }
             }
-            player.setPosition(newPosition); // je modifie la position du joueur
-            menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
-        }
-
-        }
+    }
 
     }
 

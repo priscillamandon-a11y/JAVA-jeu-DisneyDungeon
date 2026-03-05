@@ -46,13 +46,16 @@ public class Menu {
     }
 
     //Commençer l'aventure -> intro + récap
-    public int startGame(Player player){
-        System.out.println("*********************************\nDans les profondeurs d’un royaume oublié,\ndes héros se lèvent pour affronter mystères et dangers.\n" +
-                "Le destin du donjon repose entre les mains de ceux qui oseront y entrer.\n*********************************\n");
-        System.out.println("Vous êtes le : "+player.getCharacter().getType()+" "+player.getCharacter().getName()+","+"(Joueur "+player.getPlayerNumber()+")\n== VOTRE MISSION ==\nVous devez libérer le donjon de l'emprise du mal!\n*** Bonne chance ***");
-        System.out.println("(Taper 1 = Lancer le dé / Taper 0 = Quitter)");
-        return scanner.nextInt();
-
+    public void startGame(Player player){
+        System.out.println("*********************************");
+        System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.");
+        System.out.println ("Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
+        System.out.println ("*********************************\n");
+        System.out.println("Vous êtes le : "
+                +player.getCharacter().getType()+" "
+                +player.getCharacter().getName()+","
+                +"(Joueur "+player.getPlayerNumber()
+                +")\n== VOTRE MISSION ==\nVous devez libérer le donjon de l'emprise du mal!\n*** Bonne chance ***");
     }
 
     // Affiche le score du dé + la position joueur
@@ -63,7 +66,10 @@ public class Menu {
         return scanner.nextInt();
     }
 
-
+    public int askRollDice(){
+        System.out.println("Taper 1 = Lancer le dé / Taper 0 = Quitter");
+        return scanner.nextInt();
+    }
 
     // Affichage pour la fin de partie de jeu
     public void looseGame(){
