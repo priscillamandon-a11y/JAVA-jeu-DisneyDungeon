@@ -65,7 +65,7 @@ public class Game {
         } else {
             quitGame();
         }
-
+        // creation du numero du joueur
         this.player = new Player(1,character);// Creation du player après le choix du personnage pour que je puisse l'utiliser dans mes autres methodes
 
         displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage:
@@ -89,6 +89,8 @@ public class Game {
     }
 
     // ********* Demarrage de l'aventure **************
+
+
     public void startGame(){
         int choice = menu.startGame(player);
         if(choice == 1){
@@ -101,14 +103,30 @@ public class Game {
     }
     }
     public void playBoard(){
-        // boucle jusqu'à la fin du plateau
-        while (player.getPosition() < board.getSize()){
+        if (){
 
         }
+        // boucle jusqu'à la fin du plateau
+        while (player.getPosition() <= board.getSize() && menu.askRollDice()== 1){
+                int diceResult = dice.rollOfDice();
+                int newPosition = player.getPosition() + diceResult;
+                player.setPosition(newPosition);
+                menu.displayPosition(diceResult, player.getPosition());
 
+                //  Pour ne pas dépasser le plateu de jeu
+                //if(newPosition > board.getSize()){
+                  //  newPosition = board.getSize();
+                }
+
+
+              //  } if (choice == 0){
+               // quitGame();
+            //}else {
+                //System.out.println("Saisie invalide");
+            //}
+            //}
+            menu.WinGame();
+        }
 
     }
 
-
-
-}

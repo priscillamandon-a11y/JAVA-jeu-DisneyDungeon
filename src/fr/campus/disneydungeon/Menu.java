@@ -5,10 +5,6 @@ import java.util.Scanner;
 public class Menu {
     // -------- Variabls d'instance --------
     Scanner scanner = new Scanner(System.in); // Scanner pour lire les choix utilisateur,
-    private Board board;
-    private Dice dice;
-    private Character character;
-    private Player player;
 
     // -------- Constructeur --------
 
@@ -49,18 +45,32 @@ public class Menu {
 
     //Commençer l'aventure -> intro + récap
     public int startGame(Player player){
-        System.out.println(" ******* Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.\n" +
-                "Le destin du donjon repose entre les mains de ceux qui oseront y entrer. *******");
-        System.out.println("Vous êtes : "+player.getCharacter().getName()+" "+player.getCharacter().getType()+","+"(Joueur "+player.getPlayerNumber()+")");
-        System.out.println("(Taper 0 = Quitter, Taper 1 = continuer)");
+        System.out.println("*********************************\nDans les profondeurs d’un royaume oublié,\ndes héros se lèvent pour affronter mystères et dangers.\n" +
+                "Le destin du donjon repose entre les mains de ceux qui oseront y entrer.\n*********************************\n");
+        System.out.println("Vous êtes le : "+player.getCharacter().getType()+" "+player.getCharacter().getName()+","+"(Joueur "+player.getPlayerNumber()+")\n== VOTRE MISSION ==\nVous devez libérer le donjon de l'emprise du mal!\n*** Bonne chance ***");
+        System.out.println("(Taper 0 = Quitter / Taper 1 = Lancer le dé)");
         return scanner.nextInt();
 
     }
-
+    public int askRollDice (){
+        System.out.println("Taper 1 = Lancer le dé / Taper 0 = Quitter");
+        return scanner.nextInt();
+    }
     // Affiche le score du dé + la position joueur
     public void displayPosition(int diceResult, int position){
         System.out.println("Vous avez fait : "+diceResult);
         System.out.println("Vous êtes sur la case : "+position);
+    }
+
+
+    // Affichage pour la fin de partie de jeu
+    public void looseGame(){
+        System.out.println("Vous avez été vaincu !!\n******** GAME OVER ********\n");
+        System.out.println("Taper 1 = Recommencer une partie / Taper 0 = Quitter");
+    }
+    public void WinGame(){
+        System.out.println("Vous avez gagné !! le Donjon est libéré!\n******** CONGRATS ********\n");
+        System.out.println("Taper 1 = Recommencer une partie / Taper 0 = Quitter");
     }
 
 

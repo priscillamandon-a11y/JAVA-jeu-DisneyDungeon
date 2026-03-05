@@ -25,6 +25,6 @@ public class Dice {
 
     @Override
     public String toString() {
-        return "Vous jouez avec un dé à"+face+" faces";
+        return "Vous jouez avec un dé à "+face+" faces";
     }
 }
