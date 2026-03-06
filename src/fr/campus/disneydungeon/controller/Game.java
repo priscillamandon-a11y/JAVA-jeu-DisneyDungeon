@@ -39,7 +39,7 @@ public class Game {
         }
     }
 
-    // *** Les personnages ***
+    // ********* Les personnages *********
     public void createCharacter(){
 
         //Choix type de personnage :
@@ -74,7 +74,7 @@ public class Game {
 
         displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage:
     }
-    // Methode qui me permettra de modifier plus tard (si besoin) uniquement la classe Menu:
+    // Afficher le personnage choisi
     public void displayCharacter(){
         int choice = this.menu.displayCharacter(character);
         if (choice == 1){
@@ -86,7 +86,8 @@ public class Game {
             startGame();
         }
     }
-    // *** Quitter le jeu ***
+
+    //********* Quitter le jeu *********
     public void quitGame(){
         this.menu.quitGame(); // affiches les messages enregistrés dans Menu
         System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
@@ -95,29 +96,46 @@ public class Game {
     // ********* Demarrage de l'aventure **************
 
     public void startGame(){
-        menu.startGame(player);
+        menu.startGame(player); // j'appelle mon intro de jeu
 
-            while (player.getPosition() <= board.getSize()) {
-                int choice = menu.askRollDice();
+        while (player.getPosition() < board.getSize()) { // je boucle tant que l'utilisateur n'est pas àla derniere case du plateau
+            int choice = menu.askRollDice(); // j'initialise le choix utilisateur
 
-                if(choice == 1){
-                    int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
-                    int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
-                    // je mets une condition pour ne pas dépasser les 64 cases
-                    if (newPosition > board.getSize()) {
-                        newPosition = board.getSize();
-                    }
+            if(choice == 1){
+                int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
+                int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
+                // je mets une condition pour ne pas dépasser les 64 cases
+                if (newPosition > board.getSize()) {
+                    newPosition = board.getSize();
+                }
                 player.setPosition(newPosition); // je modifie la position du joueur
                 menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
 
             } else if(choice == 0){
                     quitGame();
             } else {
-                    System.out.println("Saisie invalide");
-                    menu.displayCharacter(character);
-                }
+                System.out.println("Saisie invalide");
+                menu.displayCharacter(character);
             }
+        }
+        endOfGame();
     }
 
+    // ********* FIN DE PARTIE *********
+    public void endOfGame (){
+        int choice = menu.winGame();
+
+        if (choice == 1){
+            player.setPosition(1); // remettre le joueur en position 1
+            startGame();// recommencer le jeu
+        } else if (choice == 0){
+            quitGame();
+        } else {
+            System.out.println("Saisie invalide");
+            endOfGame();
+        }
+
     }
+
+}
 

@@ -21,7 +21,9 @@ public class Menu {
     }
 
     public void quitGame(){
-         System.out.println("\n Vous avez quitter le jeu, votre aventure s'arrête ici! \n"+"      ******** Au revoir ********\n");
+        System.out.println("      ============================= ");
+        System.out.println("\n Vous avez quitter le jeu, votre aventure s'arrête ici!");
+        System.out.println("      ========== Au revoir ==========\n");
     }
 
     public int askCharacterType(){
@@ -33,14 +35,13 @@ public class Menu {
     }
 
     public String askCharacterName(){
-        System.out.print("\n"+"Choisissez un nom à votre personnage => ");
-        System.out.println("\n(Taper 0 = Quitter)");
+        System.out.print("\n"+"Choisissez un nom à votre personnage (Taper 0 = Quitter) => ");
         return scanner.next();
     }
     // recap pour utilisateur + demande de demarrer la partie
     public int displayCharacter(Character character){
         System.out.println (character);
-        System.out.println("\nTaper 1 = Démarrer la partie / Taper 0 = Quitter");
+        System.out.print("\nTaper 1 = Démarrer la partie / Taper 0 = Quitter : ");
         return scanner.nextInt();
 
     }
@@ -51,11 +52,12 @@ public class Menu {
         System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.");
         System.out.println ("Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
         System.out.println ("*********************************\n");
-        System.out.println("Vous êtes le : "
-                +player.getCharacter().getType()+" "
-                +player.getCharacter().getName()+","
-                +"(Joueur "+player.getPlayerNumber()
-                +")\n== VOTRE MISSION ==\nVous devez libérer le donjon de l'emprise du mal!\n*** Bonne chance ***");
+        System.out.println("Vous êtes le : "+player.getCharacter().getType()+" "
+                        +player.getCharacter().getName()+","
+                        +"(Joueur "+player.getPlayerNumber()+")");
+        System.out.println ("\n=> ****** VOTRE MISSION ****** <=");
+        System.out.println ("Vous devez libérer le donjon de l'emprise du mal!");
+        System.out.println ("******** Bonne chance ********\n");
     }
 
     // Affiche le score du dé + la position joueur
@@ -65,18 +67,24 @@ public class Menu {
     }
 
     public int askRollDice(){
-        System.out.println("Taper 1 = Lancer le dé / Taper 0 = Quitter");
+        System.out.print("\n==> Taper 1 = Lancer le dé / Taper 0 = Quitter : ");
         return scanner.nextInt();
     }
 
-    // Affichage pour la fin de partie de jeu
-    public void looseGame(){
-        System.out.println("Vous avez été vaincu !!\n******** GAME OVER ********\n");
-        System.out.println("Taper 1 = Recommencer une partie / Taper 0 = Quitter");
+    // ********** Pour la fin de la partie **********
+    public int looseGame(){
+        System.out.println(" \n******************************************** ");
+        System.out.println("===> Vous avez été vaincu !! YOU LOOSE !!!! <===");
+        System.out.println ("****************** GAME OVER ******************");
+        System.out.print("Taper 1 = Recommencer une partie / Taper 0 = Quitter : ");
+        return scanner.nextInt();
     }
-    public void WinGame(){
-        System.out.println("Vous avez gagné !! le Donjon est libéré!\n******** CONGRATS ********\n");
-        System.out.println("Taper 1 = Recommencer une partie / Taper 0 = Quitter");
+    public int winGame(){
+        System.out.println("\n**********************************************");
+        System.out.println("===> Vous avez gagné !! le Donjon est libéré! <===");
+        System.out.println ("****************** CONGRATS ********************");
+        System.out.print("Taper 1 = Recommencer une partie / Taper 0 = Quitter : ");
+        return scanner.nextInt();
     }
 
 
