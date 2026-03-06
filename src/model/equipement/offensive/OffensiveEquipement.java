@@ -1,6 +1,6 @@
 package model.equipement.offensive;
 
-public class OffensiveEquipement {
+public abstract class OffensiveEquipement {
 
     //-------- Variables d'instance (attributs) --------
     private String type; // armes ou sortilege
@@ -45,6 +45,6 @@ public class OffensiveEquipement {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "[Nom = "+name+" /Niveau d'attaque = "+attackLevel+" /Type = "+type+"]";
+        return name+", Niveau d'attaque = "+attackLevel;
     }
 }

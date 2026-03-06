@@ -1,6 +1,6 @@
 package model.equipement.defensive;
 
-public class DefensiveEquipement {
+public abstract class DefensiveEquipement {
 
     //-------- Variables d'instance --------
     private String type;
@@ -46,8 +46,7 @@ public class DefensiveEquipement {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "Vous avez => "+name
-                +" elle a pour niveau defensif = "+defenseLevel
-                +" elle fait partie du type = "+type;
+        return name +"Niveau defensif = "+defenseLevel;
+
     }
 }

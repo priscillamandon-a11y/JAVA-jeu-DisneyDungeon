@@ -79,16 +79,15 @@ public abstract class Character {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "\n"+"==> Vous avez Choisi :\n"
-                +"Le type :"+" "+type+"\n"
-                +"Son nom sera :"+" "+name+"\n"
-                +"-> Voici ses cractèristiques : \n"
-                +"[ Niveau de vie = "+life+"\n"
-                +" Force de frappe = "+attack+"\n"
-                +" Equipement d'attaque = "+offensiveEquipement+"\n"
-                +" Equipement defensif = "+defensiveEquipement+"\n ]";
+        return "---- Choix du "+getType()+" ----"
+                    +"Son nom : " +getName()
+                    +"Points de Vie : "+getLife()
+                    +"Force de frappe : " +getAttack()
+                    +"Equipement Offensif : " +getOffensiveEquipement()
+                    +"Equipement Defensif : " +getDefensiveEquipement();
+        }
     }
 
-}
+
 
 

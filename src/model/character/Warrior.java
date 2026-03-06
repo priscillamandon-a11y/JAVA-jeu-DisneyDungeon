@@ -14,7 +14,7 @@ public class Warrior extends Character{
 
     @Override
     public String toString() {
-        return "---- Choix du Guerrier ----"
+        return "---- Choix du "+getType()+" ----"
                 +"Son nom : " +getName()
                 +"Points de Vie : "+getLife()
                 +"Force de frappe : " +getAttack()
