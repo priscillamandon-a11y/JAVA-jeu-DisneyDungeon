@@ -1,8 +1,11 @@
 package fr.campus.disneydungeon.controller;
 
 import model.character.Character;
+import model.character.Warrior;
 import model.equipement.defensive.DefensiveEquipement;
+import model.equipement.defensive.Shield;
 import model.equipement.offensive.OffensiveEquipement;
+import model.equipement.offensive.Weapon;
 import model.gameElements.Board;
 import model.gameElements.Dice;
 import model.player.Player;
@@ -59,11 +62,9 @@ public class Game {
 
         // Creation du personnage selon le type choisi :
         if (typeChoice == 1){
-            String type = "Guerrier";
-            this.character = new Character(name, type, 10 , 5,
-                    new DefensiveEquipement("Shield",5,"Bouclier de départ"),
-                    new OffensiveEquipement("Weapon",10,"Epée à deux main")
-            );
+            this.character = new Warrior(name, new Shield("Protection",5,"Bouclier de départ"),
+                    new Weapon("Armes",10,"Epée à deux mains"));
+
         } else if (typeChoice == 2){
             String type = "Sorcier";
             this.character = new Character(name, type, 5 , 8,

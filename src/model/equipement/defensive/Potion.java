@@ -8,9 +8,5 @@ public class Potion extends DefensiveEquipement {
 
         }
 
-    @Override
-    public String toString() {
-        return "---- Détail :";
-    }
 }
 
