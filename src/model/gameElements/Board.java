@@ -1,4 +1,4 @@
-package model;
+package model.gameElements;
 
 public class Board {
     //-------- Variables d'instance (attributs) --------

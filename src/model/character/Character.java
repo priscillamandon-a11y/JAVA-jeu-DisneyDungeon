@@ -1,6 +1,10 @@
-package model;
+package model.character;
 
-public class Character {
+import model.equipement.defensive.DefensiveEquipement;
+import model.equipement.offensive.OffensiveEquipement;
+
+// on emploi abstract pour indiquer que Character devient le parent
+public abstract class Character {
 
     // Variables d'instance (ATTRIBUTS)
     private String name;
@@ -75,7 +79,7 @@ public class Character {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "\n"+"-> Vous avez Choisi :\n"
+        return "\n"+"==> Vous avez Choisi :\n"
                 +"Le type :"+" "+type+"\n"
                 +"Son nom sera :"+" "+name+"\n"
                 +"-> Voici ses cractèristiques : \n"

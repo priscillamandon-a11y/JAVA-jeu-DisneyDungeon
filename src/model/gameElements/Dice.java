@@ -1,4 +1,4 @@
-package model;
+package model.gameElements;
 
 public class Dice {
     //-------- Variables d'instance (attributs) --------

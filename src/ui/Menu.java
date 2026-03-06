@@ -1,7 +1,7 @@
 package ui;
 
-import model.Character;
-import model.Player;
+import model.character.Character;
+import model.player.Player;
 
 import java.util.Scanner;
 

@@ -1,19 +1,19 @@
-package model;
+package model.equipement.offensive;
 
-public class DefensiveEquipement {
+public class OffensiveEquipement {
 
-    //-------- Variables d'instance --------
-    private String type;
-    private int defenseLevel;
+    //-------- Variables d'instance (attributs) --------
+    private String type; // armes ou sortilege
+    private int attackLevel;
     private String name;
 
-    // -------- Constructeur ---------
-    public DefensiveEquipement (String type,int defenseLevel,String name){
+    //-------- Constructeur ---------
+    public OffensiveEquipement (String type, int attackLevel, String name){
+        // attributs
         this.type = type;
-        this.defenseLevel = defenseLevel;
+        this.attackLevel = attackLevel;
         this.name = name;
     }
-
     //-------- Methodes --------
 
     // Getter (Pour pouvoir lire les valeurs de mes varaibles privés dans mes autres classes)
@@ -21,8 +21,8 @@ public class DefensiveEquipement {
         return type;
     }
 
-    public int getDefenseLevel() {
-        return defenseLevel;
+    public int getAttackLevel() {
+        return attackLevel;
     }
 
     public String getName() {
@@ -30,13 +30,12 @@ public class DefensiveEquipement {
     }
 
     // Setter (Pour modifier les valeurs de mes varaibles privés dans les autres classes)
-
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setDefenseLevel(int defenseLevel) {
-        this.defenseLevel = defenseLevel;
+    public void setAttackLevel(int attackLevel) {
+        this.attackLevel = attackLevel;
     }
 
     public void setName(String name) {
@@ -46,6 +45,6 @@ public class DefensiveEquipement {
     //Methode spéciale -> transforme un objet en text lisible
     @Override
     public String toString() {
-        return "[Nom = "+name+" /Niveau defensif = "+defenseLevel+" /Type = "+type+"]";
+        return "[Nom = "+name+" /Niveau d'attaque = "+attackLevel+" /Type = "+type+"]";
     }
 }

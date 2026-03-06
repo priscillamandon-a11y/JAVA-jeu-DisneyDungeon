@@ -1,13 +1,17 @@
 package fr.campus.disneydungeon.controller;
 
-import model.*;
-import model.Character;
+import model.character.Character;
+import model.equipement.defensive.DefensiveEquipement;
+import model.equipement.offensive.OffensiveEquipement;
+import model.gameElements.Board;
+import model.gameElements.Dice;
+import model.player.Player;
 import ui.Menu;
 
 public class Game {
     // -------- Variables d'instances ----------
     private Menu menu;
-    private model.Character character;
+    private Character character;
     private Board board;
     private Dice dice;
     private Player player;
@@ -56,7 +60,7 @@ public class Game {
         // Creation du personnage selon le type choisi :
         if (typeChoice == 1){
             String type = "Guerrier";
-            this.character = new model.Character(name, type, 10 , 5,
+            this.character = new Character(name, type, 10 , 5,
                     new DefensiveEquipement("Shield",5,"Bouclier de départ"),
                     new OffensiveEquipement("Weapon",10,"Epée à deux main")
             );

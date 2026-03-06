@@ -1,13 +1,15 @@
-package model;
+package model.player;
+
+import model.character.Character;
 
 public class Player {
     //-------- Variables d'instance (attributs)
     private int playerNumber;
-    private model.Character character;
+    private model.character.Character character;
     private int position;
 
     //-------- Constructeur --------
-    public Player (int playerNumber, model.Character character){
+    public Player (int playerNumber, model.character.Character character){
         this.playerNumber = playerNumber;
         this.character = character;
         this.position = 1; // position 1 pour départ du plateau
@@ -16,7 +18,7 @@ public class Player {
     //-------- Methodes -------
 
     // Getter (Pour pouvoir lire les valeurs de mes varaibles privés dans mes autres classes)
-    public model.Character getCharacter() {
+    public model.character.Character getCharacter() {
         return character;
     }
 
