@@ -21,8 +21,8 @@ public class Menu {
     }
 
     public void quitGame(){
-        System.out.println("      ============================= ");
-        System.out.println("\n Vous avez quitter le jeu, votre aventure s'arrête ici!");
+        System.out.println("\n    ============================= ");
+        System.out.println("Vous avez quitter le jeu, votre aventure s'arrête ici!");
         System.out.println("      ========== Au revoir ==========\n");
     }
 

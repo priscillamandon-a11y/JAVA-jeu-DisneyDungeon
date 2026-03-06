@@ -9,6 +9,8 @@ public class Shield extends DefensiveEquipement{
     }
     @Override
     public String toString() {
-        return "---- Détail :";
+        return getName() +" / "+"Niveau défense : "+ getDefenseLevel()+" / "+"Type :" + getType();
+
     }
+
 }

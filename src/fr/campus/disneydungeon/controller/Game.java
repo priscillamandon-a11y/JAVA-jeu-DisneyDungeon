@@ -2,9 +2,12 @@ package fr.campus.disneydungeon.controller;
 
 import model.character.Character;
 import model.character.Warrior;
+import model.character.Wizard;
 import model.equipement.defensive.DefensiveEquipement;
+import model.equipement.defensive.Potion;
 import model.equipement.defensive.Shield;
 import model.equipement.offensive.OffensiveEquipement;
+import model.equipement.offensive.Spell;
 import model.equipement.offensive.Weapon;
 import model.gameElements.Board;
 import model.gameElements.Dice;
@@ -66,11 +69,9 @@ public class Game {
                     new Weapon("Armes",10,"Epée à deux mains"));
 
         } else if (typeChoice == 2){
-            String type = "Sorcier";
-            this.character = new Character(name, type, 5 , 8,
-                    new DefensiveEquipement("Potion",5,"Potion de vie"),
-                    new OffensiveEquipement("Spell",10,"Sort explosif")
-            );
+            this.character = new Wizard(name, new Potion("Soins",5,"Potion de vie"),
+                    new Spell("Magie",10,"Boule de feu"));
+
         } else {
             quitGame();
         }

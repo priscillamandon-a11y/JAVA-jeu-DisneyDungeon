@@ -7,6 +7,11 @@ public class Spell extends OffensiveEquipement {
         super("Magie",10,"Boule de feu");
 
     }
+    @Override
+    public String toString() {
+        return getName() +" / "+"Niveau Attaque : "+ getAttackLevel()+" / "+"Type :" + getType();
+
+    }
 
 
 }
