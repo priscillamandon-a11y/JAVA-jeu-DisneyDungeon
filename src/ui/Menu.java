@@ -41,7 +41,7 @@ public class Menu {
     // recap pour utilisateur + demande de demarrer la partie
     public int displayCharacter(Character character){
         System.out.println (character);
-        System.out.print("\nTaper 1 = Démarrer la partie / Taper 0 = Quitter : ");
+        System.out.print("Taper 1 = Démarrer la partie / Taper 0 = Quitter : ");
         return scanner.nextInt();
 
     }

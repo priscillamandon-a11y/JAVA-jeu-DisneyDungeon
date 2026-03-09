@@ -3,12 +3,11 @@ package fr.campus.disneydungeon.controller;
 import model.character.Character;
 import model.character.Warrior;
 import model.character.Wizard;
-import model.equipement.defensive.DefensiveEquipement;
 import model.equipement.defensive.Potion;
 import model.equipement.defensive.Shield;
-import model.equipement.offensive.OffensiveEquipement;
 import model.equipement.offensive.Spell;
 import model.equipement.offensive.Weapon;
+import model.exceptions.OutOfBoardException;
 import model.gameElements.Board;
 import model.gameElements.Dice;
 import model.player.Player;
@@ -75,10 +74,10 @@ public class Game {
         } else {
             quitGame();
         }
-        // creation du numero du joueur
-        this.player = new Player(1,character);// Creation du player après le choix du personnage pour que je puisse l'utiliser dans mes autres methodes
+        // Creation du numéro JR -> après le choix du personnage pour que je puisse l'utiliser dans mes autres methodes
+        this.player = new Player(1,character);
 
-        displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage:
+        displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage
     }
     // Afficher le personnage choisi
     public void displayCharacter(){
@@ -108,10 +107,16 @@ public class Game {
             int choice = menu.askRollDice(); // j'initialise le choix utilisateur
 
             if(choice == 1){
+
                 int diceResult = dice.rollOfDice(); // je recupere le resultat du dé
                 int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
-                // je mets une condition pour ne pas dépasser les 64 cases
+                // je mets une condition pour ne pas dépasser les 64 cases / J'utilise la classe Execption
+                try{
                 if (newPosition > board.getSize()) {
+                    throw new OutOfBoardException("Vous êtes sorti du plateau !");
+                }
+                } catch (OutOfBoardException e){ // le  e  est une variable qui signifie erreur on l'utilise par convention dans l'utilisation des exceptions
+                    System.out.println(e.getMessage());
                     newPosition = board.getSize();
                 }
                 player.setPosition(newPosition); // je modifie la position du joueur

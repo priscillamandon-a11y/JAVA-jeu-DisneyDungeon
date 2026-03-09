@@ -9,7 +9,7 @@ public class Spell extends OffensiveEquipement {
     }
     @Override
     public String toString() {
-        return getName() +" / "+"Niveau Attaque : "+ getAttackLevel()+" / "+"Type :" + getType();
+        return getName() +" / "+ "Niveau d'attaque : "+ getAttackLevel()+" / "+"Type :" + getType();
 
     }
 
