@@ -3,11 +3,11 @@ package model.gameElements.cases;
 import model.badGuys.Enemy;
 
 public class EnemyCell extends Cell {
-    // Variables
+    // ----- Variables -----
     private Enemy enemy;
 
-    // constructeur :
-    public EnemyCell(enemy){
+    // ------ constructeur ------
+    public EnemyCell(Enemy enemy){
         this.enemy = enemy;
     }
 
@@ -15,6 +15,5 @@ public class EnemyCell extends Cell {
     public String toString() {
         return enemy.toString();
     }
-
 
 }
