@@ -65,12 +65,12 @@ public class Game {
 
         // Creation du personnage selon le type choisi :
         if (typeChoice == 1){
-            this.character = new Warrior(name, new Shield("Protection",5,"Bouclier de départ"),
-                    new Weapon("Armes",10,"Epée à deux mains"));
+            this.character = new Warrior(name, new Shield(),
+                    new Weapon());
 
         } else if (typeChoice == 2){
-            this.character = new Wizard(name, new Potion("Soins",5,"Potion de vie"),
-                    new Spell("Magie",10,"Boule de feu"));
+            this.character = new Wizard(name, new Potion(),
+                    new Spell());
 
         } else {
             quitGame();

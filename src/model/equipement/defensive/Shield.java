@@ -3,7 +3,7 @@ package model.equipement.defensive;
 public class Shield extends DefensiveEquipement{
 
     // ---------- Constructeur ---------
-    public Shield (String type,int defenselevel, String name){
+    public Shield (){
         super("Protection",5,"Bouclier de départ");
 
     }

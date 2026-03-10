@@ -5,7 +5,7 @@ import model.badGuys.Enemy;
 public class Maleficent extends Enemy {
 
     // Constructeur
-    public Maleficent(String name, String description, String Type, int lifeLevel, int attackPower, int defense){
+    public Maleficent(){
         super("Maléfique","Sorcière puissante, capable de se transformer en dragon géant",
                 "Magie",150,40,30);
     }

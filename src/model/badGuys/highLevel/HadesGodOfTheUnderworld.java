@@ -5,7 +5,7 @@ import model.badGuys.Enemy;
 public class HadesGodOfTheUnderworld extends Enemy {
 
     // Constructeur
-    public HadesGodOfTheUnderworld(String name, String description, String Type, int lifeLevel, int attackPower, int defense){
+    public HadesGodOfTheUnderworld(){
         super("Hades","Dieu des Enfers au tempérament explosif contrôlant les flammes bleues.",
                 "Magie",100,20,16);
     }

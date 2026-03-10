@@ -3,7 +3,7 @@ package model.equipement.offensive;
 public class Spell extends OffensiveEquipement {
 
     // ---------- Constructeur -------
-    public Spell (String type, int attackLevel, String name){
+    public Spell (){
         super("Magie",10,"Boule de feu");
 
     }

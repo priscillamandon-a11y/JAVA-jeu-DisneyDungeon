@@ -5,7 +5,7 @@ import model.badGuys.Enemy;
 public class ProwlerOfTheRuins extends Enemy {
 
     // ---------- Constructeur --------
-    public ProwlerOfTheRuins(String name, String description, String Type, int lifeLevel, int attackPower, int defense) {
+    public ProwlerOfTheRuins() {
         super("Le Rôdeur des Ruines", "Gros cafard, Prédateur furtif, utilisant l’environnement pour tendre des embuscades et affaiblir ses proies.",
                 "Créature", 15, 4, 5);
     }

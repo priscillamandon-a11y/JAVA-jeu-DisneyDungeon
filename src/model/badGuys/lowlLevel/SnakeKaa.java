@@ -5,7 +5,7 @@ import model.badGuys.Enemy;
 public class SnakeKaa extends Enemy {
 
     // ---------- Constructeur --------
-    public SnakeKaa(String name, String description, String Type, int lifeLevel, int attackPower, int defense){
+    public SnakeKaa(){
         super("Kaa","Serpent hypnotique capable d’endormir ses adversaires avant de frapper",
                 "Créature",30, 8,7);
     }

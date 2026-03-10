@@ -3,7 +3,7 @@ package model.equipement.defensive;
 public class Potion extends DefensiveEquipement {
 
     // --------- Constructeur ----------
-    public Potion(String type, int defenseLevel, String name) {
+    public Potion() {
         super("Soins", 5, "Potion de vie");
 
     }

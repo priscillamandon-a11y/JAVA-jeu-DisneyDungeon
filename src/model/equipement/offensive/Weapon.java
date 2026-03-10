@@ -1,9 +1,9 @@
 package model.equipement.offensive;
 
-public class Weapon extends OffensiveEquipement{
+public class Weapon extends OffensiveEquipement {
 
     // -------- Constructeur ------
-    public Weapon (String type, int attackLevel, String name){
+    public Weapon (){
         super ("Armes", 10,"Epée à deux mains");
     }
     @Override
