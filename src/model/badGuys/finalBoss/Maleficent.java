@@ -1,13 +1,14 @@
-package model.badGuys;
+package model.badGuys.finalBoss;
 
-public class ProwlerOfTheRuins extends Enemy {
+import model.badGuys.Enemy;
 
-    // ---------- Constructeur --------
-    public ProwlerOfTheRuins(String name, String description, String Type, int lifeLevel, int attackPower, int defense) {
-        super("Le Rôdeur des Ruines", "Prédateur furtif, utilisant l’environnement pour tendre des embuscades et affaiblir ses proies.",
-                "insecte (sorte de cafard géant)", 15, 3, 5);
+public class Maleficent extends Enemy {
+
+    // Constructeur
+    public Maleficent(String name, String description, String Type, int lifeLevel, int attackPower, int defense){
+        super("Maléfique","Sorcière puissante, capable de se transformer en dragon géant",
+                "Magie",150,40,30);
     }
-
     @Override
     public String toString() {
         return "\n------- Un ennemis est là -------\n"

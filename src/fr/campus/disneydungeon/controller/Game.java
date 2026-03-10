@@ -13,6 +13,7 @@ import model.gameElements.Dice;
 import model.player.Player;
 import ui.Menu;
 
+
 public class Game {
     // -------- Variables d'instances ----------
     private Menu menu;
@@ -33,7 +34,7 @@ public class Game {
 
     // ------- Methodes/ fonctions ---------------
 
-    // *** Démarrage - Menu principal ***
+    // ******** Démarrage (Menu principal) *********
     public void gameIntro(){
         // Menu principal :
         int choice = this.menu.showMainMenu();
@@ -131,6 +132,8 @@ public class Game {
         }
         endOfGame();
     }
+
+
 
     // ********* FIN DE PARTIE *********
     public void endOfGame (){
