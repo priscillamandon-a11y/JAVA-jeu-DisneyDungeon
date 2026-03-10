@@ -3,10 +3,10 @@ package fr.campus.disneydungeon.controller;
 import model.character.Character;
 import model.character.Warrior;
 import model.character.Wizard;
-import model.equipement.defensive.Potion;
-import model.equipement.defensive.Shield;
-import model.equipement.offensive.Spell;
-import model.equipement.offensive.Weapon;
+import model.equipement.defensive.care.BiscuitSimba;
+import model.equipement.defensive.protect.BasicShield;
+import model.equipement.offensive.spell.BasicSpell;
+import model.equipement.offensive.weapon.BasicWeapon;
 import model.exceptions.OutOfBoardException;
 import model.gameElements.Board;
 import model.gameElements.Dice;
@@ -65,12 +65,12 @@ public class Game {
 
         // Creation du personnage selon le type choisi :
         if (typeChoice == 1){
-            this.character = new Warrior(name, new Shield(),
-                    new Weapon());
+            this.character = new Warrior(name, new BasicShield(),
+                    new BasicWeapon());
 
         } else if (typeChoice == 2){
-            this.character = new Wizard(name, new Potion(),
-                    new Spell());
+            this.character = new Wizard(name, new BiscuitSimba(),
+                    new BasicSpell());
 
         } else {
             quitGame();

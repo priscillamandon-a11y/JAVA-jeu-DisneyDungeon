@@ -8,7 +8,7 @@ public abstract class DefensiveEquipement {
     private String name;
 
     // -------- Constructeur ---------
-    public DefensiveEquipement (String type,int defenseLevel,String name){
+    public DefensiveEquipement (String name, int defenseLevel, String type){
         this.type = type;
         this.defenseLevel = defenseLevel;
         this.name = name;

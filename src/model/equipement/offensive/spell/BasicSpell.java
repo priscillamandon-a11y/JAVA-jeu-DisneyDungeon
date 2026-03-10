@@ -1,9 +1,11 @@
-package model.equipement.offensive;
+package model.equipement.offensive.spell;
 
-public class Spell extends OffensiveEquipement {
+import model.equipement.offensive.OffensiveEquipement;
+
+public class BasicSpell extends OffensiveEquipement {
 
     // ---------- Constructeur -------
-    public Spell (){
+    public BasicSpell(){
         super("Magie",10,"Boule de feu");
 
     }
