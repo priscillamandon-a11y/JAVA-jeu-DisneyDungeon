@@ -45,6 +45,19 @@ public class Menu {
         return scanner.nextInt();
 
     }
+    // Apperçu du personnage :
+    public int previewCharacter(Character character){
+        System.out.println("****** Votre personnage ******\n"
+                + character.getType()+"\n"
+                + character.getLife()+"\n"
+                + character.getAttack());
+        System.out.println("****** Votre équipement actuel ******\n"
+                +character.getOffensiveEquipement()
+                +"\n"+character.getDefensiveEquipement());
+        System.out.println("****************************************\n");
+        System.out.print("Taper 1 = Fermer apperçu et continuer / Taper 0 = Quitter : ");
+        return scanner.nextInt();
+    }
 
     //Commençer l'aventure -> intro + récap
     public void startGame(Player player){
@@ -52,10 +65,9 @@ public class Menu {
         System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.");
         System.out.println ("Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
         System.out.println ("*********************************\n");
-        System.out.println("Vous êtes le : "+player.getCharacter().getType()+" "
-                        +player.getCharacter().getName()+","
-                        +"(Joueur "+player.getPlayerNumber()+")");
         System.out.println ("\n=> ****** VOTRE MISSION ****** <=");
+        System.out.println("(Joueur "+player.getPlayerNumber()+") "+"Vous êtes le : "+player.getCharacter().getType()+" "
+                +player.getCharacter().getName());
         System.out.println ("Vous devez libérer le donjon de l'emprise du mal!");
         System.out.println ("******** Bonne chance ********\n");
     }

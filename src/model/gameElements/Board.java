@@ -2,7 +2,7 @@ package model.gameElements;
 
 import model.badGuys.lowlLevel.ProwlerOfTheRuins;
 import model.equipement.defensive.care.BiscuitSimba;
-import model.equipement.offensive.weapon.BasicWeapon;
+import model.equipement.offensive.weapon.SultanSword;
 import model.gameElements.cases.*;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class Board {
     private void buildBoard (){
         cells.add(new EmptyCell()); // case 1 (vide)
         cells.add(new EnemyCell(new ProwlerOfTheRuins())); // case 2 (ennemi)
-        cells.add(new WeaponCell(new BasicWeapon())); // case 3 (arme)
+        cells.add(new WeaponCell(new SultanSword())); // case 3 (arme)
         cells.add(new PotionCell(new BiscuitSimba())); // case 4 (potion)
 
         // Boucle pour completer le plateau jusqu'à la fin
