@@ -6,18 +6,12 @@ public class ProwlerOfTheRuins extends Enemy {
 
     // ---------- Constructeur --------
     public ProwlerOfTheRuins() {
-        super("Le Rôdeur des Ruines", "Gros cafard, Prédateur furtif, utilisant l’environnement pour tendre des embuscades et affaiblir ses proies.",
+        super("LE RÔDEUR DES RUINES", "Gros cafard, Prédateur furtif, utilisant l’environnement pour tendre des embuscades et affaiblir ses proies.",
                 "Créature", 15, 4, 5);
     }
 
     @Override
     public String toString() {
-        return "\n------- Un ennemis est là -------\n"
-                + "===> " + getName() + " <===" + "\n"
-                + "Sa catégorie : " + getType() + "\n"
-                + "Description : " + getDescription() + "\n"
-                + "Niveau de vie : " + getLifeLevel() + "\n"
-                + "Force d'attaque : " + getAttackPower() + "\n"
-                + "Défense : " + getDefense() + "\n";
+        return "\n"+super.toString();
     }
 }

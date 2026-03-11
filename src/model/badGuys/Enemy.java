@@ -1,5 +1,7 @@
 package model.badGuys;
 
+import model.player.Player;
+
 public abstract class Enemy {
 
     // Variables d'instance (ATTRIBUTS)
@@ -68,4 +70,18 @@ public abstract class Enemy {
     public void setDefense(int defense) {
         this.defense = defense;
     }
+
+// --------------- Affichage des ennemis -------------------
+    @Override
+    public String toString() {
+        return ">>>>>>>> ATTENTION <<<<<<<<\n>>>>>> Vous êtes attaqué!! <<<<<<\n"
+                + "\n===> " + getName() + " <===" + "\n"
+                + "Sa catégorie : " + getType() + "\n"
+                + "Description : " + getDescription() + "\n"
+                + "Niveau de vie : " + getLifeLevel() + "\n"
+                + "Force d'attaque : " + getAttackPower() + "\n"
+                + "Défense : " + getDefense() + "\n"
+                + ">>>>>>>> Que souhaitez vous faire ? <<<<<<<<\n";
+    }
+
 }

@@ -38,8 +38,8 @@ public class Board {
         return "Plateau de jeu avec "+size+" cases";
     }
 
-    // ********** Construction du plateau avec remplissage des cases ***********************
-    private void buildBoard (){
+    // ********** Construction du plateau avec remplissage des cases **************
+    public void buildBoard (){
         cells.add(new EmptyCell()); // case 1 (vide)
         cells.add(new EnemyCell(new ProwlerOfTheRuins())); // case 2 (ennemi)
         cells.add(new WeaponCell(new SultanSword())); // case 3 (arme)
@@ -49,5 +49,9 @@ public class Board {
         while(cells.size()< size){
             cells.add(new EmptyCell()); // compéte avec des cases vides
         }
+    }
+    // methode pour renvoyer une case exacte du plateau
+    public Cell getCell(int index){
+        return cells.get(index); // prendre l'index de la case et renvoyer la Cell qui correspond
     }
 }

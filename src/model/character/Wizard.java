@@ -13,12 +13,12 @@ public class Wizard extends Character{
     }
     @Override
     public String toString() {
-        return "\n---- Choix du "+getType()+" ----\n"
-                +"Son nom : " +getName()+"\n"
-                +"Points de Vie : "+getLife()+"\n"
-                +"Force de frappe : " +getAttack()+"\n"
+        return "\n---------------- Choix du "+getType()+" --------------------\n"
+                +"=> Son nom : " +getName()+"\n"
+                +"=> Points de Vie : "+getLife()+"\n"
+                +"=> Force de frappe : " +getAttack()+"\n"
                 +"Equipement Offensif : " +getOffensiveEquipement()+"\n"
-                +"Equipement Defensif : " +getDefensiveEquipement()+"\n";
+                +"Equipement Defensif : " +getDefensiveEquipement();
     }
 
 }

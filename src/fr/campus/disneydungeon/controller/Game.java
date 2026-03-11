@@ -1,5 +1,6 @@
 package fr.campus.disneydungeon.controller;
 
+import model.badGuys.Enemy;
 import model.character.Character;
 import model.character.Warrior;
 import model.character.Wizard;
@@ -10,6 +11,8 @@ import model.equipement.offensive.weapon.BasicWeapon;
 import model.exceptions.OutOfBoardException;
 import model.gameElements.Board;
 import model.gameElements.Dice;
+import model.gameElements.cases.Cell;
+import model.gameElements.cases.EnemyCell;
 import model.player.Player;
 import ui.Menu;
 
@@ -93,14 +96,7 @@ public class Game {
         }
     }
 
-    //********* Quitter le jeu *********
-    public void quitGame(){
-        this.menu.quitGame(); // affiches les messages enregistrés dans Menu
-        System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
-    }
-
     // ********* Demarrage de l'aventure **************
-
     public void startGame(){
         menu.startGame(player); // j'appelle mon intro de jeu
 
@@ -123,6 +119,14 @@ public class Game {
                 player.setPosition(newPosition); // je modifie la position du joueur
                 menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
 
+                Cell playerPosition = board.getCell(player.getPosition()); // j'identifie la case sur laquelle est le joueur
+                System.out.println(playerPosition); // je demande d'afficher la case
+
+                playTurn(playerPosition);
+
+            } else if (choice == 2){
+                menu.previewCharacter(character);
+
             } else if(choice == 0){
                     quitGame();
             } else {
@@ -133,7 +137,43 @@ public class Game {
         endOfGame();
     }
 
+    // ******* Interaction joueur avec le plateau *********
+    public void playTurn(Cell cell){
 
+        if(cell.getType().equals("enemy")){
+            System.out.println (cell); // Affichage de la case
+
+            int choice = menu.chooseInteract("1 = Combattre / 2 = Fuir / 3 = Aperçu personnage (0 = Quitter) : ");
+            if (choice == 1){
+                fight(cell.getEnemy());
+
+            } else if ( choice == 2){
+                System.out.println ("Vous fuyez!! \n => vous reculez de 2 cases \n => Vous perdez 2 PV\n");
+
+            }else if (choice == 3){
+                menu.previewCharacter(character);
+
+            }else if(choice == 0){
+                quitGame();
+
+            } else {
+                System.out.println("Saisie invalide");
+                menu.displayCharacter(character);
+            }
+
+        }
+
+    }
+    // Combattre :
+    public void fight(Enemy enemy){
+
+    }
+
+    //********* Quitter le jeu *********
+    public void quitGame(){
+        this.menu.quitGame(); // affiches les messages enregistrés dans Menu
+        System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
+    }
 
     // ********* FIN DE PARTIE *********
     public void endOfGame (){

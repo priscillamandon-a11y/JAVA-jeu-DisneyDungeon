@@ -41,35 +41,36 @@ public class Menu {
     // recap pour utilisateur + demande de demarrer la partie
     public int displayCharacter(Character character){
         System.out.println (character);
+        System.out.println("------------------------------------------------------");
         System.out.print("Taper 1 = Démarrer la partie / Taper 0 = Quitter : ");
         return scanner.nextInt();
 
     }
     // Apperçu du personnage :
     public int previewCharacter(Character character){
-        System.out.println("****** Votre personnage ******\n"
-                + character.getType()+"\n"
-                + character.getLife()+"\n"
-                + character.getAttack());
-        System.out.println("****** Votre équipement actuel ******\n"
-                +character.getOffensiveEquipement()
-                +"\n"+character.getDefensiveEquipement());
-        System.out.println("****************************************\n");
-        System.out.print("Taper 1 = Fermer apperçu et continuer / Taper 0 = Quitter : ");
+        System.out.println("---------> Aperçu du personnage <---------\n"
+                + "=> Vous êtes un "+character.getType()+"\n"
+                + "=> Vous avez : "+character.getLife()+" PV"+"\n"
+                + "=> Vous avez : "+character.getAttack()+" de force de frappe");
+        System.out.println("------> Votre équipement actuel <------\n"
+                +"Pour l'attaque : "+character.getOffensiveEquipement()
+                +"\n"+"Pour la défense : "+character.getDefensiveEquipement());
+        System.out.println("------------- FIN DE L'APERCU -------------\n");
+        System.out.print("Taper 1 = Fermer aperçu et continuer / Taper 0 = Quitter : ");
         return scanner.nextInt();
     }
 
     //Commençer l'aventure -> intro + récap
     public void startGame(Player player){
-        System.out.println("*********************************");
+        System.out.println("\n*************** ENTREE DANS LE DONJON ********************");
         System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.");
         System.out.println ("Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
-        System.out.println ("*********************************\n");
-        System.out.println ("\n=> ****** VOTRE MISSION ****** <=");
-        System.out.println("(Joueur "+player.getPlayerNumber()+") "+"Vous êtes le : "+player.getCharacter().getType()+" "
-                +player.getCharacter().getName());
+        System.out.println ("***********************************************************");
+        System.out.println("=======> "+"Vous êtes : "+"Le "+player.getCharacter().getType()+" "
+                +player.getCharacter().getName() +" (Joueur "+player.getPlayerNumber()+")"+" <=======");
+        System.out.println ("===> **** VOTRE MISSION **** <===");
         System.out.println ("Vous devez libérer le donjon de l'emprise du mal!");
-        System.out.println ("******** Bonne chance ********\n");
+        System.out.println ("********************** BONNE CHANCE *********************\n");
     }
 
     // Affiche le score du dé + la position joueur
@@ -79,7 +80,13 @@ public class Menu {
     }
 
     public int askRollDice(){
-        System.out.print("\n==> Taper 1 = Lancer le dé / Taper 0 = Quitter : ");
+        System.out.println("==> Taper 1 = Lancer le dé / Taper 2 = Aperçu du personnage (Taper 0 = Quitter) : ");
+        return scanner.nextInt();
+    }
+
+    // ******** Les interactions plateau ***********
+    public int chooseInteract(String message){
+        System.out.print (message);
         return scanner.nextInt();
     }
 

@@ -12,7 +12,7 @@ public class Player {
     public Player (int playerNumber, model.character.Character character){
         this.playerNumber = playerNumber;
         this.character = character;
-        this.position = 1; // position 1 pour départ du plateau
+        this.position = 0; // position 0 pour départ du plateau
     }
 
     //-------- Methodes -------
@@ -42,4 +42,5 @@ public class Player {
     public void setPosition(int position) {
         this.position = position;
     }
+
 }

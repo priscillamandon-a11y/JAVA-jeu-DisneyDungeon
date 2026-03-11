@@ -1,9 +1,21 @@
 package model.gameElements.cases;
 
+import model.player.Player;
+
 public class EmptyCell extends Cell {
+    // -------- Variables -------
+
+    // -------- Constructeur -------
+
+    // -------- Methodes ----------
+
+    @Override // methode pour identifier le type de case (vide ou pas)
+    public String getType() {
+        return "empty";
+    }
 
     @Override
     public String toString() {
-        return "Case vide";
+        return " --- Il n'y a personne, vous pouvez continuer votre chemin ---\n";
     }
 }
