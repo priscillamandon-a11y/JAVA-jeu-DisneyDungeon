@@ -2,6 +2,9 @@ package model.gameElements.cases;
 
 import model.player.Player;
 
+/**
+ * Case vide sans événement particulier.
+ */
 public class EmptyCell extends Cell {
     // -------- Variables -------
 

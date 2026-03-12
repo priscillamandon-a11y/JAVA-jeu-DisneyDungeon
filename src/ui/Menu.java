@@ -28,7 +28,7 @@ public class Menu {
 
     public int askCharacterType(){
         System.out.println ("\nQuel type de personnage voulez-vous creer ? ");
-        System.out.println("Taper 1 pour : Un Guerrier"+"\n"+"Taper 2 pour : Un Magicien \n"+"Taper 0 pour : Quitter");
+        System.out.println("Taper 1 pour : Un Guerrier"+"\n"+"Taper 2 pour : Un Sorcier \n"+"Taper 0 pour : Quitter");
         System.out.print("Votre choix => ");
 
         return scanner.nextInt();
@@ -65,7 +65,7 @@ public class Menu {
         System.out.println("\n*************** ENTREE DANS LE DONJON ********************");
         System.out.println("Dans les profondeurs d’un royaume oublié, des héros se lèvent pour affronter mystères et dangers.");
         System.out.println ("Le destin du donjon repose entre les mains de ceux qui oseront y entrer.");
-        System.out.println ("***********************************************************");
+        System.out.println ("***********************************************************\n");
         System.out.println("=======> "+"Vous êtes : "+"Le "+player.getCharacter().getType()+" "
                 +player.getCharacter().getName() +" (Joueur "+player.getPlayerNumber()+")"+" <=======");
         System.out.println ("===> **** VOTRE MISSION **** <===");

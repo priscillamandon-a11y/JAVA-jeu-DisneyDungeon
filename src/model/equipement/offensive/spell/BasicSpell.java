@@ -6,7 +6,7 @@ public class BasicSpell extends OffensiveEquipement {
 
     // ---------- Constructeur -------
     public BasicSpell(){
-        super("Magie",10,"Boule de feu");
+        super("Flamme Dansante",10,"Magie");
 
     }
     @Override

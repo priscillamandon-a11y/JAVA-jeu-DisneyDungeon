@@ -3,11 +3,19 @@ package model.gameElements.cases;
 import model.equipement.offensive.OffensiveEquipement;
 import model.player.Player;
 
+/**
+ * Case contenant une arme que le joueur peut récupérer.
+ */
 public class WeaponCell extends Cell {
 
     // -------- Variables -------
     private OffensiveEquipement offensiveEquipement;
 
+    /**
+     * Crée une case arme avec l'équipement donné.
+     *
+     * @param offensiveEquipement arme présente sur la case
+     */
     // -------- Constructeur -------
     public WeaponCell(OffensiveEquipement offensiveEquipement){
         this.offensiveEquipement = offensiveEquipement;
@@ -15,19 +23,33 @@ public class WeaponCell extends Cell {
 
     // -------- Methodes ----------
 
+    /**
+     * @return l'équipement offensif contenu dans la case
+     */
     public OffensiveEquipement getOffensiveEquipement() {
         return offensiveEquipement;
     }
 
+    /**
+     * Change l'arme contenue dans la case.
+     *
+     * @param offensiveEquipement nouvelle arme
+     */
     public void setOffensiveEquipement(OffensiveEquipement offensiveEquipement) {
         this.offensiveEquipement = offensiveEquipement;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override // methode pour identifier le type de case (vide ou pas)
     public String getType() {
         return "weapon";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return "\n------- Vous trouvez une arme  -------\n"

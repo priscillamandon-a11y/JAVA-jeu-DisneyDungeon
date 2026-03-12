@@ -17,6 +17,10 @@ import model.player.Player;
 import ui.Menu;
 
 
+/**
+ * Contrôleur principal du jeu. Gère l'interaction avec le joueur,
+ * le plateau et la logique de déroulement de la partie.
+ */
 public class Game {
     // -------- Variables d'instances ----------
     private Menu menu;
@@ -26,6 +30,9 @@ public class Game {
     private Player player;
 
 
+    /**
+     * Initialise les composants de base du jeu (menu, plateau, dé).
+     */
     // -------- constructeur ------------------
     public Game (){
         //Creation des objets
@@ -37,6 +44,10 @@ public class Game {
 
     // ------- Methodes/ fonctions ---------------
 
+    /**
+     * Affiche le menu d'introduction et redirige selon le choix :
+     * création de personnage ou sortie.
+     */
     // ******** Démarrage (Menu principal) *********
     public void gameIntro(){
         // Menu principal :
@@ -52,6 +63,11 @@ public class Game {
         }
     }
 
+    /**
+     * Procédure de création du personnage choisie par l'utilisateur.
+     * Demande le type et le nom puis instancie {@link Warrior} ou
+     * {@link Wizard}.
+     */
     // ********* Les personnages *********
     public void createCharacter(){
 
@@ -83,6 +99,11 @@ public class Game {
 
         displayCharacter(); // j'appel la methode depuis la class Menu pour Afficher le personnage
     }
+
+    /**
+     * Affiche les caractéristiques du personnage courant puis propose
+     * de démarrer la partie.
+     */
     // Afficher le personnage choisi
     public void displayCharacter(){
         int choice = this.menu.displayCharacter(character);
@@ -99,6 +120,16 @@ public class Game {
     // ********* Demarrage de l'aventure **************
     public void startGame(){
         menu.startGame(player); // j'appelle mon intro de jeu
+        startGameLoop();
+
+    }
+
+    /**
+     * Boucle principale de la partie. Gère le déplacement, les interactions
+     * sur les cases et les choix du joueur.
+     */
+    // boucle de jeu
+    public void startGameLoop(){
 
         while (player.getPosition() < board.getSize()) { // je boucle tant que l'utilisateur n'est pas àla derniere case du plateau
             int choice = menu.askRollDice(); // j'initialise le choix utilisateur
@@ -109,9 +140,9 @@ public class Game {
                 int newPosition = player.getPosition() + diceResult; // je recupere la position du Joueur et la rajoute au dé
                 // je mets une condition pour ne pas dépasser les 64 cases / J'utilise la classe Execption
                 try{
-                if (newPosition > board.getSize()) {
-                    throw new OutOfBoardException("Vous êtes sorti du plateau !");
-                }
+                    if (newPosition > board.getSize()) {
+                        throw new OutOfBoardException("Vous êtes sorti du plateau !");
+                    }
                 } catch (OutOfBoardException e){ // le  e  est une variable qui signifie erreur on l'utilise par convention dans l'utilisation des exceptions
                     System.out.println(e.getMessage());
                     newPosition = board.getSize();
@@ -120,15 +151,13 @@ public class Game {
                 menu.displayPosition(diceResult, player.getPosition()); // j'affiche ou en est l'utilisateur
 
                 Cell playerPosition = board.getCell(player.getPosition()); // j'identifie la case sur laquelle est le joueur
-                System.out.println(playerPosition); // je demande d'afficher la case
-
                 playTurn(playerPosition);
 
             } else if (choice == 2){
                 menu.previewCharacter(character);
 
             } else if(choice == 0){
-                    quitGame();
+                quitGame();
             } else {
                 System.out.println("Saisie invalide");
                 menu.displayCharacter(character);
@@ -137,7 +166,13 @@ public class Game {
         endOfGame();
     }
 
-    // ******* Interaction joueur avec le plateau *********
+    /**
+     * Traite l'interaction du joueur avec une case donnée.
+     *
+     * @param cell case sur laquelle le joueur se trouve
+     */
+
+    // ******* Interaction joueur avec les cases du plateau *********
     public void playTurn(Cell cell){
 
         if(cell.getType().equals("enemy")){
@@ -148,7 +183,7 @@ public class Game {
                 fight(cell.getEnemy());
 
             } else if ( choice == 2){
-                System.out.println ("Vous fuyez!! \n => vous reculez de 2 cases \n => Vous perdez 2 PV\n");
+                flee();
 
             }else if (choice == 3){
                 menu.previewCharacter(character);
@@ -160,21 +195,116 @@ public class Game {
                 System.out.println("Saisie invalide");
                 menu.displayCharacter(character);
             }
+        } else if (cell.getType().equals("potion")){
+            // programmer ramasser ou laisser potion
+
+        } else if (cell.getType().equals("weapon")){
+            //programmer ramasser ou laisser arme
+
+        } else if (cell.getType().equals("empty")){
+            Cell playerPosition = board.getCell(player.getPosition()); // j'identifie la case sur laquelle est le joueur
+            System.out.println(playerPosition); // je demande d'afficher la case
 
         }
-
     }
+    /**
+     * Démarre un combat contre un ennemi.
+     *
+     * @param enemy ennemi à combattre
+     */
+
     // Combattre :
     public void fight(Enemy enemy){
+        System.out.println("======= Le combat va commencer =======\n");
 
+        // tant que l'ennemi n'est pas mort ou le personnage n'est pas mort :
+        while (character.getLife() > 0 && enemy.getLifeLevel()>0){
+            int choice = menu.chooseInteract("=> 1 = Attaquer / 2 = Se protéger / 3 = Fuir (0 = Quitter)");
+
+            // attaque du personnage
+            if (choice == 1){
+                int damagePlayer = character.getAttack()+ character.getOffensiveEquipement().getAttackLevel();
+                int newPvEnemy = enemy.getLifeLevel() - damagePlayer;
+                enemy.setLifeLevel(newPvEnemy);
+                System.out.println("Vous avez touchez l'ennemi! il lui reste : "+newPvEnemy+" PV");
+
+                // attaque de l'ennemi
+                int damageEnemi =  enemy.getAttackPower() - character.getDefensiveEquipement().getDefenseLevel();
+                if(damageEnemi<0){
+                    damageEnemi =0;
+                }
+                int newPvPlayer = character.getLife() - damageEnemi;
+                character.setLife(newPvPlayer);
+                System.out.println("Vous avez été touché par son attaque de : "+enemy.getAttackPower()+"il vous reste :"+newPvPlayer+" PV");
+
+                // Ennemis mort :
+                if(newPvEnemy<=0){
+                    System.out.println ("============ ET BAAAAAAAAAMMMMMMMM ============");
+                    System.out.println ("======== Vous avez vaincu l'ennemi =========");
+                    return; // sort de la methode fight()
+
+                } else if (newPvPlayer <= 0){
+                    menu.looseGame();
+                }
+
+            } else if (choice == 2){
+                System.out.println("\n====> Vous choisissez d'utiliser votre : "+character.getDefensiveEquipement().getName()+"<====");
+
+                int reducedDamage = enemy.getAttackPower() - character.getDefensiveEquipement().getDefenseLevel();
+                if (reducedDamage < 0) reducedDamage = 0; // éviter les dégâts négatifs
+
+                int newPvPlayer = character.getLife() - reducedDamage;
+                character.setLife(newPvPlayer);
+                System.out.println("Vous ne subissez que "+reducedDamage+" dégâts");
+                System.out.println("Il vous reste "+newPvPlayer+" PV");
+
+            } else if (choice == 3){
+                flee();
+                return; // sort de la methode fight()
+
+
+            }else if (choice == 0){
+                quitGame();
+            }
+        }
+        Cell playerPosition = board.getCell(player.getPosition()); // j'identifie la case sur laquelle est le joueur
+        playTurn(playerPosition);
     }
 
+
+    // LA fuite :
+    public void flee(){
+        System.out.println("\n========> Vous avez décidé de fuir le combat <========= ");
+        // je fais reculer le joueur
+        int newPosition = player.getPosition()-2;
+        // je fais attention a ce qu'il ne puisse pas sortir du plateau
+        if (newPosition < 0){
+            newPosition = 0;
+        }
+        player.setPosition(newPosition);
+        System.out.println("=> Vous repartez à la case : "+newPosition);
+
+        // je lui enlève -2 PV :
+        int newPvPlayer = character.getLife()-2;
+        character.setLife(newPvPlayer);
+        System.out.println("=> Vous perdez 2 PV. Il vous reste : "+newPvPlayer+" PV \n");
+
+        startGameLoop();
+    }
+
+    /**
+     * Termine le programme proprement en affichant le message de fin.
+     */
     //********* Quitter le jeu *********
     public void quitGame(){
         this.menu.quitGame(); // affiches les messages enregistrés dans Menu
         System.exit(0); // permet d'arreter le systeme (le zero indique que l'arret s'est bien passé)
     }
 
+    /**
+     * Propose au joueur de recommencer ou de quitter lorsque le plateau
+     * est terminé.
+     */
     // ********* FIN DE PARTIE *********
     public void endOfGame (){
         int choice = menu.winGame();

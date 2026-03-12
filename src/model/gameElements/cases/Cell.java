@@ -1,6 +1,7 @@
 package model.gameElements.cases;
 
 import model.badGuys.Enemy;
+import model.character.Character;
 import model.equipement.defensive.DefensiveEquipement;
 import model.equipement.offensive.OffensiveEquipement;
 import model.player.Player;
@@ -18,6 +19,8 @@ public abstract class Cell {
     // j'utilise abstract avec toString car c'est le modele de ma classe parent, grace à abstract Cell reste mon modele et oblige les enfants a avoir leur toString qui affichera ce que la case est sensée faire
     @Override
     public abstract String toString();
+
+    public  abstract String interact();
 
     // ----- Methodes ------
     public Enemy getEnemy(){

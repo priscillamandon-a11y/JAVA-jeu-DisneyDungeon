@@ -24,6 +24,9 @@ public class PotionCell extends Cell {
         this.defensiveEquipement = defensiveEquipement;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override // methode pour identifier le type de case (vide ou pas)
     public String getType() {
         return "potion";
