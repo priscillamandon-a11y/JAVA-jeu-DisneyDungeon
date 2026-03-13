@@ -175,36 +175,32 @@ public class Game {
     // ******* Interaction joueur avec les cases du plateau *********
     public void playTurn(Cell cell){
 
-        if(cell.getType().equals("enemy")){
-            System.out.println (cell); // Affichage de la case
+        switch (cell.getType()){ // mise en place de switch (plus lisible) pour afficher les case
 
-            int choice = menu.chooseInteract("1 = Combattre / 2 = Fuir / 3 = Aperçu personnage (0 = Quitter) : ");
-            if (choice == 1){
-                fight(cell.getEnemy());
+            case "enemy" :
+                System.out.println (cell); // Affichage de la case
+                int choice = menu.chooseInteract("1 = Combattre / 2 = Fuir / 3 = Aperçu personnage (0 = Quitter) : ");
+                if (choice == 1){ fight(cell.getEnemy());}
+                else if ( choice == 2){ flee();}
+                else if (choice == 3){ menu.previewCharacter(character);}
+                else if(choice == 0){ quitGame();}
+                else {System.out.println("Saisie invalide");
+                    menu.displayCharacter(character);
+                } return;
 
-            } else if ( choice == 2){
-                flee();
+            case "potion" :
+                System.out.println (cell); // Affichage de la case
+                // programmer la logique
+                return;
 
-            }else if (choice == 3){
-                menu.previewCharacter(character);
+            case "weapon" :
+                System.out.println (cell); // Affichage de la case
+                // programmer la logique
+                return;
 
-            }else if(choice == 0){
-                quitGame();
-
-            } else {
-                System.out.println("Saisie invalide");
-                menu.displayCharacter(character);
-            }
-        } else if (cell.getType().equals("potion")){
-            // programmer ramasser ou laisser potion
-
-        } else if (cell.getType().equals("weapon")){
-            //programmer ramasser ou laisser arme
-
-        } else if (cell.getType().equals("empty")){
-            Cell playerPosition = board.getCell(player.getPosition()); // j'identifie la case sur laquelle est le joueur
-            System.out.println(playerPosition); // je demande d'afficher la case
-
+            case "empty" :
+                System.out.println (cell); // Affichage de la case
+                return;
         }
     }
     /**
