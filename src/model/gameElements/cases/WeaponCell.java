@@ -17,7 +17,8 @@ public class WeaponCell extends Cell {
      * @param offensiveEquipement arme présente sur la case
      */
     // -------- Constructeur -------
-    public WeaponCell(OffensiveEquipement offensiveEquipement){
+    public WeaponCell(int index, OffensiveEquipement offensiveEquipement){
+        super(index);
         this.offensiveEquipement = offensiveEquipement;
     }
 
@@ -35,9 +36,6 @@ public class WeaponCell extends Cell {
      *
      * @param offensiveEquipement nouvelle arme
      */
-    public void setOffensiveEquipement(OffensiveEquipement offensiveEquipement) {
-        this.offensiveEquipement = offensiveEquipement;
-    }
 
     /**
      * {@inheritDoc}
@@ -54,5 +52,9 @@ public class WeaponCell extends Cell {
     public String toString() {
         return "\n------- Vous trouvez une arme  -------\n"
                 + offensiveEquipement.toString();
+    }
+    @Override
+    public String interact() {
+        return "Arme : " + getOffensiveEquipement().getName();
     }
 }

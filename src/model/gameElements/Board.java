@@ -68,14 +68,14 @@ public class Board {
      */
     // ********** Construction du plateau avec remplissage des cases **************
     public void buildBoard (){
-        cells.add(new EmptyCell()); // case 1 (vide)
-        cells.add(new EnemyCell(new ProwlerOfTheRuins())); // case 2 (ennemi)
-        cells.add(new WeaponCell(new SultanSword())); // case 3 (arme)
-        cells.add(new PotionCell(new BiscuitSimba())); // case 4 (potion)
+        cells.add(new EmptyCell(0)); // case 1 (vide)
+        cells.add(new EnemyCell(1,new ProwlerOfTheRuins())); // case 2 (ennemi)
+        cells.add(new WeaponCell(2,new SultanSword())); // case 3 (arme)
+        cells.add(new PotionCell(3,new BiscuitSimba())); // case 4 (potion)
 
         // Boucle pour completer le plateau jusqu'à la fin
         while(cells.size()< size){
-            cells.add(new EmptyCell()); // compéte avec des cases vides
+            cells.add(new EmptyCell(cells.size())); // compéte avec des cases vides
         }
     }
     /**

@@ -215,38 +215,48 @@ public class Game {
 
     // Combattre :
     public void fight(Enemy enemy){
-        System.out.println("======= Le combat va commencer =======\n");
+        System.out.println("\n>>>>>>>>>>>>> Le combat commence <<<<<<<<<<<<<<<");
 
         // tant que l'ennemi n'est pas mort ou le personnage n'est pas mort :
         while (character.getLife() > 0 && enemy.getLifeLevel()>0){
-            int choice = menu.chooseInteract("=> 1 = Attaquer / 2 = Se protéger / 3 = Fuir (0 = Quitter)");
+            int choice = menu.chooseInteract(">>>> 1 = Attaquer / 2 = Se protéger / 3 = Fuir (0 = Quitter) <<<<\n");
 
-            // attaque du personnage
+            //--------- ATTAQUE -----------
             if (choice == 1){
+                // attaque du joueur
                 int damagePlayer = character.getAttack()+ character.getOffensiveEquipement().getAttackLevel();
                 int newPvEnemy = enemy.getLifeLevel() - damagePlayer;
+
+                if(newPvEnemy < 0){ newPvEnemy=0;} // pour que les PV ennemi ne soient pas négatif
+
                 enemy.setLifeLevel(newPvEnemy);
-                System.out.println("Vous avez touchez l'ennemi! il lui reste : "+newPvEnemy+" PV");
+                System.out.println(">>> Vous avez touchez l'ennemi! <<<\n il lui reste : "+newPvEnemy+" PV");
+
+                // vérifier si ennemi mort :
+                if(newPvEnemy == 0){
+                    System.out.println ("\n============ ET BAAAAAAAAAMMMMMMMM ============");
+                    System.out.println ("============ Vous avez vaincu l'ennemi ==========");
+                    return; // sort de la methode fight()
+                     }
 
                 // attaque de l'ennemi
+                System.out.println("\n>>>>> "+enemy.getName()+" vous attaque <<<<<");
+
                 int damageEnemi =  enemy.getAttackPower() - character.getDefensiveEquipement().getDefenseLevel();
-                if(damageEnemi<0){
-                    damageEnemi =0;
-                }
+                if(damageEnemi<0){ damageEnemi = 0;} // pour que les degats ne soient pas en négatif
+
                 int newPvPlayer = character.getLife() - damageEnemi;
                 character.setLife(newPvPlayer);
-                System.out.println("Vous avez été touché par son attaque de : "+enemy.getAttackPower()+"il vous reste :"+newPvPlayer+" PV");
 
-                // Ennemis mort :
-                if(newPvEnemy<=0){
-                    System.out.println ("============ ET BAAAAAAAAAMMMMMMMM ============");
-                    System.out.println ("======== Vous avez vaincu l'ennemi =========");
-                    return; // sort de la methode fight()
+                System.out.println("Il vous inflige : "+enemy.getAttackPower()+" dégats\n"+"=> il vous reste : "+newPvPlayer+" PV");
 
-                } else if (newPvPlayer <= 0){
+                // Vérifier si joueur mort
+                if (newPvPlayer <= 0){
                     menu.looseGame();
+                    quitGame();
                 }
 
+            //--------- POROTECTION -----------
             } else if (choice == 2){
                 System.out.println("\n====> Vous choisissez d'utiliser votre : "+character.getDefensiveEquipement().getName()+"<====");
 
@@ -258,11 +268,12 @@ public class Game {
                 System.out.println("Vous ne subissez que "+reducedDamage+" dégâts");
                 System.out.println("Il vous reste "+newPvPlayer+" PV");
 
+            //--------- FUIR -----------
             } else if (choice == 3){
                 flee();
                 return; // sort de la methode fight()
 
-
+            // --------- QUITTER -----------
             }else if (choice == 0){
                 quitGame();
             }

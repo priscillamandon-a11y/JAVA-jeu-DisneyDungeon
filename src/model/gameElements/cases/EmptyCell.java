@@ -9,6 +9,9 @@ public class EmptyCell extends Cell {
     // -------- Variables -------
 
     // -------- Constructeur -------
+    public EmptyCell(int index) {
+        super(index);
+    }
 
     // -------- Methodes ----------
 
@@ -21,4 +24,10 @@ public class EmptyCell extends Cell {
     public String toString() {
         return " --- Il n'y a personne, vous pouvez continuer votre chemin ---\n";
     }
+
+    @Override
+    public String interact() {
+        return "Il n'y a rien";
+    }
+
 }

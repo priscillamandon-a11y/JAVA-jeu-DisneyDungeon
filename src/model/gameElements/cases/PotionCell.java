@@ -10,7 +10,8 @@ public class PotionCell extends Cell {
     private DefensiveEquipement defensiveEquipement;
 
     // -------- Constructeur -------
-    public PotionCell (DefensiveEquipement defensiveEquipement){
+    public PotionCell (int index, DefensiveEquipement defensiveEquipement){
+        super(index);
         this.defensiveEquipement = defensiveEquipement;
     }
 
@@ -18,10 +19,6 @@ public class PotionCell extends Cell {
 
     public DefensiveEquipement getDefensiveEquipement() {
         return defensiveEquipement;
-    }
-
-    public void setDefensiveEquipement(DefensiveEquipement defensiveEquipement) {
-        this.defensiveEquipement = defensiveEquipement;
     }
 
     /**
@@ -36,6 +33,10 @@ public class PotionCell extends Cell {
     public String toString() {
         return "\n------- Vous trouvez une potion -------\n"
                 + defensiveEquipement.toString();
+    }
+    @Override
+    public String interact() {
+        return "Défense : " + getDefensiveEquipement().getName();
     }
 
 }

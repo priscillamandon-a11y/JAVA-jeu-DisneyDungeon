@@ -10,13 +10,15 @@ public class EnemyCell extends Cell {
     // ----- Variables -----
     private Enemy enemy;
 
+    // ------ constructeur ------
     /**
      * Initialise une case ennemie avec l'ennemi donné.
      *
      * @param enemy ennemi occupant la case
      */
-    // ------ constructeur ------
-    public EnemyCell(Enemy enemy){
+
+    public EnemyCell(int index, Enemy enemy){
+        super(index);
         this.enemy = enemy;
     }
 
@@ -26,19 +28,15 @@ public class EnemyCell extends Cell {
      * Renvoie l'ennemi de la case.
      * @return l'ennemi stocké
      */
+    @Override
     public Enemy getEnemy() {
         return enemy;
     }
-
     /**
      * Définit l'ennemi de la case.
      *
      * @param enemy nouvel ennemi
      */
-    public void setEnemy(Enemy enemy) {
-        this.enemy = enemy;
-    }
-
     /**
      * {@inheritDoc}
      */
@@ -46,13 +44,16 @@ public class EnemyCell extends Cell {
     public String getType() {
         return "enemy";
     }
-
     /**
      * {@inheritDoc}
      */
     @Override
     public String toString() {
         return enemy.toString();
+    }
+    @Override
+    public String interact() {
+        return " ";
     }
 
 }
