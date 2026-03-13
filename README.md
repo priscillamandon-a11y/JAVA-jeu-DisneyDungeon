@@ -42,148 +42,326 @@ Ouvrir le projet dans votre IDE, puis lancer la classe : `Main.java`
 
 ```mermaid
 classDiagram
-    %% core game classes
+    class Main {
+        + main(String[] args)
+    }
+
     class Game {
+        - Menu menu
         - Character character
         - Board board
         - Dice dice
+        - Player player
+        + gameIntro()
+        + createCharacter()
         + startGame()
-        + playTurn()
+        + playTurn(Cell)
+        + fight(Enemy)
+        + flee()
+        + endOfGame()
     }
 
     class Menu {
+        - Scanner scanner
         + showMainMenu()
-        + askCharacter()
-        + showCharacter()
+        + askCharacterType()
+        + askCharacterName()
+        + displayCharacter(Character)
+        + previewCharacter(Character)
+        + startGame(Player)
+        + displayPosition(int, int)
+        + askRollDice()
+        + chooseInteract(String)
+        + looseGame()
+        + winGame()
+        + quitGame()
+    }
+
+    class Player {
+        - int playerNumber
+        - Character character
+        - int position
+        + getCharacter()
+        + getPlayerNumber()
+        + getPosition()
+        + setPosition(int)
     }
 
     class Character {
-        - String type
+        <<abstract>>
         - String name
+        - String type
         - int life
         - int attack
-        - OffensiveEquipement offensiveEq
-        - DefensiveEquipement defensiveEq
-        + getters/setters()
+        - DefensiveEquipement defensiveEquipement
+        - OffensiveEquipement offensiveEquipement
+        + getName()
+        + getType()
+        + getLife()
+        + getAttack()
+        + getOffensiveEquipement()
+        + getDefensiveEquipement()
+        + setLife(int)
+        + setOffensiveEquipement(OffensiveEquipement)
+        + setDefensiveEquipement(DefensiveEquipement)
         + toString()
     }
 
     class Warrior {
-        + Warrior(name, defensiveEquipement, offensiveEquipement)
+        + Warrior(String, DefensiveEquipement, OffensiveEquipement)
         + toString()
     }
-    class Wizard {
-        + Wizard(name, defensiveEquipement, offensiveEquipement)
-        + toString()
-    }
-    Character <|-- Warrior
-    Character <|-- Wizard
 
-    %% equipment hierarchies
+    class Wizard {
+        + Wizard(String, DefensiveEquipement, OffensiveEquipement)
+        + toString()
+    }
+
     class OffensiveEquipement {
+        <<abstract>>
         - String type
         - int attackLevel
         - String name
+        + getType()
+        + getAttackLevel()
+        + getName()
+        + toString()
     }
-    class BasicSpell
-    class ArielStorm
-    class DragonFire
-    class LightningZeus
-    OffensiveEquipement <|-- BasicSpell
-    OffensiveEquipement <|-- ArielStorm
-    OffensiveEquipement <|-- DragonFire
-    OffensiveEquipement <|-- LightningZeus
 
-    class BasicWeapon
-    class HerculeSword
-    class KingTritonTrident
-    class SultanSword
-    OffensiveEquipement <|-- BasicWeapon
-    OffensiveEquipement <|-- HerculeSword
-    OffensiveEquipement <|-- KingTritonTrident
-    OffensiveEquipement <|-- SultanSword
+    class BasicWeapon {
+        + BasicWeapon()
+        + toString()
+    }
+
+    class SultanSword {
+        + SultanSword()
+        + toString()
+    }
+
+    class KingTritonTrident {
+        + KingTritonTrident()
+        + toString()
+    }
+
+    class HerculeSword {
+        + HerculeSword()
+        + toString()
+    }
+
+    class BasicSpell {
+        + BasicSpell()
+        + toString()
+    }
+
+    class ArielStorm {
+        + ArielStorm()
+        + toString()
+    }
+
+    class DragonFire {
+        + DragonFire()
+        + toString()
+    }
+
+    class LightningZeus {
+        + LightningZeus()
+        + toString()
+    }
 
     class DefensiveEquipement {
+        <<abstract>>
         - String type
         - int defenseLevel
         - String name
+        + getType()
+        + getDefenseLevel()
+        + getName()
+        + toString()
     }
-    class BasicShield
-    class BlueFairyShield
-    class HerculeShield
-    DefensiveEquipement <|-- BasicShield
-    DefensiveEquipement <|-- BlueFairyShield
-    DefensiveEquipement <|-- HerculeShield
 
-    class BiscuitSimba
-    class ElixirMulan
-    class EnchantedRedApple
-    class PotionTinkerbell
-    DefensiveEquipement <|-- BiscuitSimba
-    DefensiveEquipement <|-- ElixirMulan
-    DefensiveEquipement <|-- EnchantedRedApple
-    DefensiveEquipement <|-- PotionTinkerbell
+    class BasicShield {
+        + BasicShield()
+        + toString()
+    }
 
-    %% board cases
+    class BlueFairyShield {
+        + BlueFairyShield()
+        + toString()
+    }
+
+    class HerculeShield {
+        + HerculeShield()
+        + toString()
+    }
+
+    class BiscuitSimba {
+        + BiscuitSimba()
+        + toString()
+    }
+
+    class ElixirMulan {
+        + ElixirMulan()
+        + toString()
+    }
+
+    class EnchantedRedApple {
+        + EnchantedRedApple()
+        + toString()
+    }
+
+    class PotionTinkerbell {
+        + PotionTinkerbell()
+        + toString()
+    }
+
+    class Board {
+        - int size
+        - ArrayList~Cell~ cells
+        + getSize()
+        + buildBoard()
+        + getCell(int)
+    }
+
+    class Dice {
+        - int face
+        + rollOfDice()
+        + getFace()
+        + setFace(int)
+        + toString()
+    }
+
     class Cell {
-        + String getType()
-        + String toString()
-        + Enemy getEnemy()
-        + DefensiveEquipement getDefensiveEquipement()
-        + OffensiveEquipement getOffensiveEquipement()
+        <<abstract>>
+        - int index
+        + getType()
+        + toString()
+        + interact()
+        + getEnemy()
+        + getDefensiveEquipement()
+        + getOffensiveEquipement()
     }
-    class EmptyCell
-    class EnemyCell
-    class PotionCell
-    class WeaponCell
-    Cell <|-- EmptyCell
-    Cell <|-- EnemyCell
-    Cell <|-- PotionCell
-    Cell <|-- WeaponCell
 
-    %% enemies
+    class EmptyCell {
+        + EmptyCell(int)
+        + getType()
+        + toString()
+        + interact()
+    }
+
+    class EnemyCell {
+        - Enemy enemy
+        + EnemyCell(int, Enemy)
+        + getEnemy()
+        + getType()
+        + toString()
+        + interact()
+    }
+
+    class PotionCell {
+        - DefensiveEquipement defensiveEquipement
+        + PotionCell(int, DefensiveEquipement)
+        + getDefensiveEquipement()
+        + getType()
+        + toString()
+        + interact()
+    }
+
+    class WeaponCell {
+        - OffensiveEquipement offensiveEquipement
+        + WeaponCell(int, OffensiveEquipement)
+        + getOffensiveEquipement()
+        + getType()
+        + toString()
+        + interact()
+    }
+
     class Enemy {
+        <<abstract>>
         - String name
         - String description
         - String type
         - int lifeLevel
         - int attackPower
         - int defense
-        + getters/setters()
+        + getName()
+        + getDescription()
+        + getType()
+        + getLifeLevel()
+        + getAttackPower()
+        + getDefense()
+        + setLifeLevel(int)
         + toString()
     }
-    class Maleficent
-    class ScarLion
-    class SnakeKaa
-    class ProwlerOfTheRuins
-    class HadesGodOfTheUnderworld
+
+    class Maleficent {
+        + Maleficent()
+        + toString()
+    }
+
+    class HadesGodOfTheUnderworld {
+        + HadesGodOfTheUnderworld()
+        + toString()
+    }
+
+    class ScarLion {
+        + ScarLion()
+        + toString()
+    }
+
+    class SnakeKaa {
+        + SnakeKaa()
+        + toString()
+    }
+
+    class ProwlerOfTheRuins {
+        + ProwlerOfTheRuins()
+        + toString()
+    }
+
+    class OutOfBoardException {
+        + OutOfBoardException(String)
+    }
+
+    Main --> Game : lance
+    Game --> Menu : utilise
+    Game --> Board : utilise
+    Game --> Dice : utilise
+    Game --> Player : utilise
+    Game --> Character : utilise
+    Game --> Cell : utilise
+    Game --> Enemy : utilise
+    Player --> Character : possède
+    Character <|-- Warrior
+    Character <|-- Wizard
+    OffensiveEquipement <|-- BasicWeapon
+    OffensiveEquipement <|-- SultanSword
+    OffensiveEquipement <|-- KingTritonTrident
+    OffensiveEquipement <|-- HerculeSword
+    OffensiveEquipement <|-- BasicSpell
+    OffensiveEquipement <|-- ArielStorm
+    OffensiveEquipement <|-- DragonFire
+    OffensiveEquipement <|-- LightningZeus
+    DefensiveEquipement <|-- BasicShield
+    DefensiveEquipement <|-- BlueFairyShield
+    DefensiveEquipement <|-- HerculeShield
+    DefensiveEquipement <|-- BiscuitSimba
+    DefensiveEquipement <|-- ElixirMulan
+    DefensiveEquipement <|-- EnchantedRedApple
+    DefensiveEquipement <|-- PotionTinkerbell
+    Board --> Cell : contient
+    Cell <|-- EmptyCell
+    Cell <|-- EnemyCell
+    Cell <|-- PotionCell
+    Cell <|-- WeaponCell
+    EnemyCell --> Enemy : contient
+    PotionCell --> DefensiveEquipement : contient
+    WeaponCell --> OffensiveEquipement : contient
     Enemy <|-- Maleficent
+    Enemy <|-- HadesGodOfTheUnderworld
     Enemy <|-- ScarLion
     Enemy <|-- SnakeKaa
     Enemy <|-- ProwlerOfTheRuins
-    Enemy <|-- HadesGodOfTheUnderworld
-
-    class Board {
-        - int size = 64
-    }
-
-    class Dice {
-        + roll()
-    }
-
-    class Player {
-        - int position
-        - Character character
-        - int numberPlayer
-    }
-
-    %% relations
-    Game --> Menu : uses
-    Game --> Board
-    Game --> Dice
-    Game --> Player
-    Game --> Cell
-```
+    Game --> OutOfBoardException : lance
 
 > Le diagramme ci-dessus fournit une vue d'ensemble des principales classes et de leurs relations.
 
