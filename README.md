@@ -216,7 +216,7 @@ classDiagram
 
     class Board {
         - int size
-        - ArrayList~Cell~ cells
+        - ArrayList<Cell> cells
         + getSize()
         + buildBoard()
         + getCell(int)
@@ -362,6 +362,3 @@ classDiagram
     Enemy <|-- SnakeKaa
     Enemy <|-- ProwlerOfTheRuins
     Game --> OutOfBoardException : lance
-
-> Le diagramme ci-dessus fournit une vue d'ensemble des principales classes et de leurs relations.
-
