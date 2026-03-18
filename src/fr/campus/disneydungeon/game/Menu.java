@@ -60,6 +60,19 @@ public class Menu {
         return scanner.nextInt();
     }
 
+    // Afficher les stats personnage pour l'aperçu
+    public void previewCharacterStats(Character character){
+        System.out.println("\n---------> Aperçu du personnage <---------\n"
+                + "=> Vous êtes un "+character.getType()+"\n"
+                + "=> Vous avez : "+character.getLife()+" PV"+"\n"
+                + "=> Vous avez : "+character.getAttack()+" de force de frappe");
+        System.out.println("------> Votre équipement actuel <------\n"
+                +"Pour l'attaque : "+character.getOffensiveEquipement()
+                +"\n"+"Pour la défense : "+character.getDefensiveEquipement());
+        System.out.println("------------- FIN DE L'APERCU -------------\n");
+
+    }
+
     //Commençer l'aventure -> intro + récap
     public void startGame(Player player){
         System.out.println("\n*************** ENTREE DANS LE DONJON ********************");

@@ -1,11 +1,14 @@
 package fr.campus.disneydungeon.game;
 
 import fr.campus.disneydungeon.badGuys.Enemy;
+import fr.campus.disneydungeon.board.cases.WeaponCell;
 import fr.campus.disneydungeon.character.Character;
 import fr.campus.disneydungeon.character.Warrior;
 import fr.campus.disneydungeon.character.Wizard;
+import fr.campus.disneydungeon.equipement.defensive.DefensiveEquipement;
 import fr.campus.disneydungeon.equipement.defensive.care.BiscuitSimba;
 import fr.campus.disneydungeon.equipement.defensive.protect.BasicShield;
+import fr.campus.disneydungeon.equipement.offensive.OffensiveEquipement;
 import fr.campus.disneydungeon.equipement.offensive.spell.BasicSpell;
 import fr.campus.disneydungeon.equipement.offensive.weapon.BasicWeapon;
 import fr.campus.disneydungeon.exceptions.OutOfBoardException;
@@ -26,6 +29,7 @@ public class Game {
     private Board board;
     private Dice dice;
     private Player player;
+    private OffensiveEquipement OffensiveEquipement;
 
 
     /**
@@ -177,29 +181,98 @@ public class Game {
 
             case "enemy" :
                 System.out.println (cell); // Affichage de la case
-                int choice = menu.chooseInteract("1 = Combattre / 2 = Fuir / 3 = Aperçu personnage (0 = Quitter) : ");
-                if (choice == 1){ fight(cell.getEnemy());}
-                else if ( choice == 2){ flee();}
-                else if (choice == 3){ menu.previewCharacter(character);}
-                else if(choice == 0){ quitGame();}
-                else {System.out.println("Saisie invalide");
-                    menu.displayCharacter(character);
-                } return;
+                boolean stayEnemyCell = true; // je lui demande de rester sur la case ennemy tant qu'on est dans la condition vrai
+
+                while(stayEnemyCell) {
+                    int choice = menu.chooseInteract("1 = Combattre / 2 = Fuir / 3 = Aperçu personnage (0 = Quitter) : ");
+
+                    if (choice == 1) {
+                        fight(cell.getEnemy());
+                        stayEnemyCell = false; // je lui donne faux pour quitter la case après le combat
+                    } else if (choice == 2) {
+                        flee();
+                        stayEnemyCell = false; // je lui donne faux pour quitter la case après la fuite
+                    } else if (choice == 3) {
+                        menu.previewCharacterStats(character); // j'affiche les stats du personnage sans quitter la case
+
+                    } else if (choice == 0) {
+                        quitGame();
+                    } else {
+                        System.out.println("Saisie invalide");
+                        menu.displayCharacter(character);
+                    }
+                }
+                    return;
 
             case "potion" :
                 System.out.println (cell); // Affichage de la case
-                int choiceDefense = menu.chooseInteract("1 = Ramasser / 2 = laisser / 3 = Aperçu personnage (0 = Quitter) : ");
-                if (choiceDefense == 1){ }
-                // programmer logique
+                boolean stayPotionCell = true; // je lui demande de rester sur la case ennemy tant qu'on est dans la condition vrai
+
+                while(stayPotionCell) {
+                    int choiceDefense = menu.chooseInteract("1 = Ramasser / 2 = laisser / 3 = Aperçu personnage (0 = Quitter) : ");
+
+                    if (choiceDefense == 1) {
+                        DefensiveEquipement newPotion = cell.getDefensiveEquipement(); // récupérer l'équipement défensif
+
+                        // equiper le personnage
+                        character.setDefensiveEquipement(newPotion);
+
+                        System.out.println("\n====> Vous ramassez : " + newPotion.getName() + " <====");
+                        System.out.println("Vous avez : " + newPotion.getDefenseLevel()+" PV");
+
+                        stayPotionCell = false; // quitter la case
+
+                    }else if (choiceDefense == 2){
+                        stayPotionCell = false; // quitter la case
+
+                    }else if (choiceDefense == 3){
+                        menu.previewCharacterStats(character);
+
+                    }else if (choiceDefense == 4) {
+                        menu.previewCharacterStats(character);
+
+                    }else if (choiceDefense == 0) {
+                        quitGame();
+
+                    }else {
+                        System.out.println("Saisie invalide");
+                        menu.displayCharacter(character);
+                    }
+                }
                 return;
 
             case "weapon" :
                 System.out.println (cell); // Affichage de la case
-                int choiceWeapon = menu.chooseInteract("1 = Ramasser / 2 = laisser / 3 = Aperçu personnage (0 = Quitter) : ");
-                if (choiceWeapon == 1){ }
-                // programmer logique
+                boolean stayWeaponCell = true; // je lui demande de rester sur la case ennemy tant qu'on est dans la condition vrai
 
-                return;
+                while(stayWeaponCell) {
+                    int choiceWeapon = menu.chooseInteract("1 = S'équiper / 2 = laisser / 3 = Aperçu personnage (0 = Quitter) : ");
+
+                    if (choiceWeapon == 1) {
+                        OffensiveEquipement newWeapon = cell.getOffensiveEquipement(); // répuré l'arme de la case
+
+                        // équiper le personnage :
+                        character.setOffensiveEquipement(newWeapon);
+
+                        System.out.println("\n====> Vous ramassez : " + newWeapon.getName() + " <====");
+                        System.out.println("Niveau d'attaque : " + newWeapon.getAttackLevel());
+                        stayWeaponCell = false; // quitter la case
+
+                    }else if (choiceWeapon == 2){
+                        System.out.println("Vous laissez l'arme et continuez votre chemin.");
+                        stayWeaponCell = false; // quitter la case
+
+                    }else if (choiceWeapon == 3){
+                        menu.previewCharacterStats(character);
+
+                    }else if (choiceWeapon == 0) {
+                        quitGame();
+
+                    }else {
+                        System.out.println("Saisie invalide");
+                        menu.displayCharacter(character);
+                    }
+                } return;
 
             case "empty" :
                 System.out.println (cell); // Affichage de la case
@@ -212,7 +285,7 @@ public class Game {
      * @param enemy ennemi à combattre
      */
 
-    // Combattre :
+    // --------------- COMBAT --------------------------------
     public void fight(Enemy enemy){
         System.out.println("\n>>>>>>>>>>>>> Le combat commence <<<<<<<<<<<<<<<");
 
@@ -241,13 +314,13 @@ public class Game {
                 // attaque de l'ennemi
                 System.out.println("\n>>>>> "+enemy.getName()+" vous attaque <<<<<");
 
-                int damageEnemi =  enemy.getAttackPower() - character.getDefensiveEquipement().getDefenseLevel();
+                int damageEnemi =  enemy.getAttackPower();
                 if(damageEnemi<0){ damageEnemi = 0;} // pour que les degats ne soient pas en négatif
 
                 int newPvPlayer = character.getLife() - damageEnemi;
                 character.setLife(newPvPlayer);
 
-                System.out.println("Il vous inflige : "+enemy.getAttackPower()+" dégats\n"+"=> il vous reste : "+newPvPlayer+" PV");
+                System.out.println("Il vous inflige : "+damageEnemi+" dégats\n"+"=> il vous reste : "+newPvPlayer+" PV");
 
                 // Vérifier si joueur mort
                 if (newPvPlayer <= 0){
@@ -256,7 +329,7 @@ public class Game {
                     return; // sortir de la methode
                 }
 
-            //--------- POROTECTION -----------
+            //--------- Protection -----------
             } else if (choice == 2){
                 System.out.println("\n====> Vous choisissez d'utiliser votre : "+character.getDefensiveEquipement().getName()+" <====");
 
@@ -277,9 +350,7 @@ public class Game {
                     return; // sortir de la methode
                 }
 
-
-
-            //--------- FUIR -----------
+            //--------- La fuite -----------
             } else if (choice == 3){
                 flee();
                 return; // sort de la methode fight()
@@ -294,7 +365,7 @@ public class Game {
     }
 
 
-    // LA fuite :
+    // Fuir :
     public void flee(){
         System.out.println("\n========> Vous avez décidé de fuir le combat <========= ");
         // je fais reculer le joueur
@@ -313,6 +384,13 @@ public class Game {
 
         startGameLoop();
     }
+
+    // --------- Interraction avec objets -------------
+
+    public void pickUpItem (){
+
+    }
+
 
     /**
      * Termine le programme proprement en affichant le message de fin.
