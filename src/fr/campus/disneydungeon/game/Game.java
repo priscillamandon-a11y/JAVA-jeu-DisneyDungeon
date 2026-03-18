@@ -228,9 +228,6 @@ public class Game {
                     }else if (choiceDefense == 3){
                         menu.previewCharacterStats(character);
 
-                    }else if (choiceDefense == 4) {
-                        menu.previewCharacterStats(character);
-
                     }else if (choiceDefense == 0) {
                         quitGame();
 
@@ -383,12 +380,6 @@ public class Game {
         System.out.println("=> Vous perdez 2 PV. Il vous reste : "+newPvPlayer+" PV \n");
 
         startGameLoop();
-    }
-
-    // --------- Interraction avec objets -------------
-
-    public void pickUpItem (){
-
     }
 
 
