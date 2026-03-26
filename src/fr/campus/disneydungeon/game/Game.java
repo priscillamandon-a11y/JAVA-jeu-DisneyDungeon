@@ -402,7 +402,8 @@ public class Game {
 
         if (choice == 1){
             player.setPosition(1); // remettre le joueur en position 1
-            startGame();// recommencer le jeu
+            createCharacter(); // on recreer un personnage pour recommencer
+
         } else if (choice == 0){
             quitGame();
         } else {

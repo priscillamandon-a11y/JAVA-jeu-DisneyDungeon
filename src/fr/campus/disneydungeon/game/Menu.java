@@ -51,7 +51,7 @@ public class Menu {
         System.out.println("---------> Aperçu du personnage <---------\n"
                 + "=> Vous êtes un "+character.getType()+"\n"
                 + "=> Vous avez : "+character.getLife()+" PV"+"\n"
-                + "=> Vous avez : "+character.getAttack()+" de force de frappe");
+                + "=> Vous avez : "+character.getAttack()+" de force de frappe et "+ character.getOffensiveEquipement()+" dégâts de votre arme");
         System.out.println("------> Votre équipement actuel <------\n"
                 +"Pour l'attaque : "+character.getOffensiveEquipement()
                 +"\n"+"Pour la défense : "+character.getDefensiveEquipement());
